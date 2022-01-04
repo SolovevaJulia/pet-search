@@ -1,9 +1,11 @@
-import './add-post.css'
+import "./add-post.css";
 
 const AddPost = () => {
-    return(
-        <button type="button" className="btn btn-add-post">Добавить запись</button>
-    )
-}
+    return (
+        <button type="button" className="btn btn-logo">
+            Добавить запись
+        </button>
+    );
+};
 
-export default AddPost
+export default AddPost;

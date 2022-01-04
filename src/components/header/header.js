@@ -1,5 +1,6 @@
 import Logo from "../header/img/dog-logo.png";
 import "./header.css";
+import AddPost from "../add-post/add-post";
 
 const Header = () => {
     return (
@@ -10,9 +11,7 @@ const Header = () => {
                     <p className="logo-text mb-0">PetSearch</p>
                 </div>
                 <div className="col-4 d-flex  justify-content-end">
-                    <button type="button" className="btn btn-logo">
-                        Зарегистрироваться
-                    </button>
+                    <AddPost />
                 </div>
             </div>
         </div>
