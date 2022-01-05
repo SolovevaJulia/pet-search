@@ -1,4 +1,4 @@
-import "./add-post.css";
+import "../buttons.css";
 
 const AddPost = () => {
     return (
