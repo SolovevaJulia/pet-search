@@ -1,0 +1,41 @@
+.menu-type {
+    position: relative;
+}
+.btn-type {
+    border: 1px solid #f87661;
+    width: 100%;
+}
+.wrapper-menu {
+    /*display: none;*/
+    margin-top: 20px;
+    padding: 0 15px 0 15px;
+    background-color: #d9e4e2;
+    position: absolute;
+    right: 0;
+    left: 0;
+    border: 1px solid #333333;
+
+}
+.wrapper-menu-list {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.menu-item-checkbox {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 9px;
+    text-transform: lowercase;
+}
+
+
+@media screen and (max-width: 575px) {
+    .wrapper-menu {
+        position: relative;
+    }
+}
