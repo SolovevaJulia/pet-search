@@ -1,0 +1,21 @@
+.card-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pet-img {
+    max-width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+    width: 95%;
+}
+
+.card-wrapper {
+    background-color: #d9e4e2;
+    border-radius: 20px;
+    padding: 24px 30px;
+    width: 48%;
+    display: flex;
+    align-items: left;
+}
