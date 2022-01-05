@@ -5,25 +5,21 @@
     color: white;
     font-size: 14px;
     line-height: 20px;
-}
-
-.logo-img {
-    width: 34px;
     margin-right: 10px;
 }
 
-.logo-text {
-    color: #333333;
+
+.btn-enter {
+    background-color: transparent;
+    border: 2px solid #f87661;
+    padding: 12px 23px;
     font-weight: 700;
-    font-size: 20px;
+    color: #f87661;
+    font-size: 14px;
+    line-height: 20px;
 }
 
+
 @media screen and (max-width: 575px) {
-    .right-row {
-        justify-content: center;
-        margin-bottom: 30px;
-    }
-    .left-row {
-        justify-content: center!important;
-    }
+
 }
