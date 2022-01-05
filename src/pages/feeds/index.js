@@ -1,9 +1,13 @@
 import SearchPanel from "../../components/pages/feeds/search-panel";
+import CardsWrapper from "../../components/pages/feeds/card-list/cards-wrapper";
 
 const Feeds = () => {
     return (
         <section>
-            <SearchPanel />
+            <div className="container">
+                <SearchPanel />
+                <CardsWrapper />
+            </div>
         </section>
     );
 };
