@@ -1,5 +1,5 @@
 import Header from './components/header/header'
-import SearchPanel from "./components/search-panel";
+import SearchPanel from "./components/pages/feeds/search-panel";
 // css стили
 import "./index.css";
 
