@@ -1,13 +1,18 @@
-import Header from './components/header/header'
-import SearchPanel from "./components/pages/feeds/search-panel";
+import React from "react";
+// import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 // css стили
+import Header from "./components/header/header";
 import "./index.css";
+import MainRoutes from "./routers/index";
 
 function App() {
     return (
         <section className="App">
             <Header />
-            <SearchPanel/>
+            <Router>
+                <MainRoutes />
+            </Router>
         </section>
     );
 }
