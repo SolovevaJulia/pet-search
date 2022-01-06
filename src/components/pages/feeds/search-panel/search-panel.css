@@ -6,7 +6,7 @@
     width: 100%;
 }
 .wrapper-menu {
-    /*display: none;*/
+    /* display: none; */
     margin-top: 20px;
     padding: 0 15px 0 15px;
     background-color: #d9e4e2;
@@ -14,7 +14,6 @@
     right: 0;
     left: 0;
     border: 1px solid #333333;
-
 }
 .wrapper-menu-list {
     padding: 10px 0;
@@ -32,7 +31,6 @@
     margin-bottom: 9px;
     text-transform: lowercase;
 }
-
 
 @media screen and (max-width: 575px) {
     .wrapper-menu {
