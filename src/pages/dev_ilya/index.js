@@ -16,7 +16,7 @@ const DevIlya = () => {
 
     const nextPage = () => {
         const newCardPage = [{title: 'Страница 2'},
-            {title: 'Скроль вниз на третию стр'},
+            {title: 'Скроль вниз на третью стр'},
             {title: 'Лоадер 3'}]
         setLoader(true)
         setTimeout(() => {
@@ -38,12 +38,16 @@ const DevIlya = () => {
     }
 
     useEffect(() => {
-        let options = { threshold: [0.5] };
-        let observer = new IntersectionObserver(onEntry, options);
-        let elements = document.querySelectorAll('.btn-more');
-        for (let elm of elements) {
-            observer.observe(elm);
+        const visibleBtn = () => {
+            let options = { threshold: [0.5] };
+            let observer = new IntersectionObserver(onEntry, options);
+            let elements = document.querySelectorAll('.btn-more');
+            for (let elm of elements) {
+                observer.observe(elm);
+            }
         }
+        visibleBtn()
+        return () => {}
     })
     // ТЕСТ
 
@@ -62,9 +66,9 @@ const DevIlya = () => {
                 }
                 <div className='btn-more-wrapper'>
                     {loader ?  <div className="spinner-border loader" role="status">
-                        <span className="sr-only"></span>
-                    </div>
-                    :  <button onClick={() => nextPage()} type="button" className="btn btn-more">Загрузить еще</button>
+                            <span className="sr-only"></span>
+                        </div>
+                        :  <button onClick={() => nextPage()} type="button" className="btn btn-more">Загрузить еще</button>
                     }
                 </div>
             </div>
