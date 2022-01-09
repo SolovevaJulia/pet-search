@@ -75,3 +75,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 git remote set-url origin https://gitlab.com/IlyaLesunov/pet-search.git
 git remote set-url origin https://github.com/SolovevaJulia/pet-search.git
+get remote -v

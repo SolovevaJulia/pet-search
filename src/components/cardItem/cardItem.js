@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 import PetPhoto from "../cardItem/img/photo_2022-01-05_18-00-35.jpg";
-import PetPhoto2 from "../cardItem/img/pet2.jpg";
-import PetPhoto3 from "../cardItem/img/pet3.jpg";
-import FacebookIcon from "../cardItem/img/facebook.png";
+// import PetPhoto2 from "../cardItem/img/pet2.jpg";
+// import PetPhoto3 from "../cardItem/img/pet3.jpg";
+// import FacebookIcon from "../cardItem/img/facebook.png";
 import InstagramIcon from "../cardItem/img/instagram.png";
 import TelegramIcon from "../cardItem/img/telegram.png";
 import WhatsappIcon from "../cardItem/img/whatsapp.png";
@@ -24,7 +24,7 @@ const CardItem = () => {
                 <div className="card-slide">
                     <div className="card-top">
                         <div className="card-left">
-                            <img className="pet-img" src={PetPhoto} />
+                            <img alt='a' className="pet-img" src={PetPhoto} />
                         </div>
                         <div className="card-right">
                             <h2 className="card-title">Пропал кот</h2>
@@ -58,22 +58,22 @@ const CardItem = () => {
                         {/*    <img src={FacebookIcon} />*/}
                         {/*</a>*/}
                         <a>
-                            <img src={InstagramIcon} />
+                            <img alt='a' src={InstagramIcon} />
                         </a>
                         <a>
-                            <img src={InstagramIcon} />
+                            <img alt='a' src={InstagramIcon} />
                         </a>
                         <a>
-                            <img src={TelegramIcon} />
+                            <img alt='a' src={TelegramIcon} />
                         </a>
                         <a>
-                            <img src={WhatsappIcon} />
+                            <img alt='a' src={WhatsappIcon} />
                         </a>
                         <a>
-                            <img src={VkIcon} />
+                            <img alt='a' src={VkIcon} />
                         </a>
                         <a>
-                            <img src={Call} />
+                            <img alt='a' src={Call} />
                         </a>
                     </div>
                     <button onClick={showMap} className="card-map btn">
