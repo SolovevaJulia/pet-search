@@ -5,6 +5,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/header/header";
 import "./index.css";
 import MainRoutes from "./routers/index";
+import LocalServiceWorkerRegister from './sw-register';
+LocalServiceWorkerRegister();
+
 
 function App() {
     return (

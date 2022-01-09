@@ -1,4 +1,5 @@
 {
+  "homepage": "pet-search",
   "name": "find-pets",
   "version": "0.1.0",
   "private": true,

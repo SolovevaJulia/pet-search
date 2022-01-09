@@ -10,12 +10,12 @@ import Home from "../pages/home";
 const MainRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="feeds" element={<Feeds />} />
+            <Route path="pet-search/" element={<Home />}></Route>
+            <Route path="pet-search/feeds" element={<Feeds />} />
             {/*    Тест разработка, удалить по завершению проекта!*/}
-            <Route path="dev_ilya" element={<DevIlya />} />
+            <Route path="pet-search/dev_ilya" element={<DevIlya />} />
             {/*    Тест разработка, удалить по завершению проекта!*/}
-            <Route path="post_ads" element={<PostAds />} />
+            <Route path="pet-search/post_ads" element={<PostAds />} />
         </Routes>
     );
 };
