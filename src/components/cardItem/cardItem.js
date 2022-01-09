@@ -57,24 +57,24 @@ const CardItem = () => {
                         {/*<a>*/}
                         {/*    <img src={FacebookIcon} />*/}
                         {/*</a>*/}
-                        <a href="#">
-                            <img alt='a' src={InstagramIcon} />
-                        </a>
-                        <a href="#">
-                            <img alt='a' src={InstagramIcon} />
-                        </a >
-                        <a href="#">
-                            <img alt='a' src={TelegramIcon} />
-                        </a>
-                        <a href="#">
-                            <img alt='a' src={WhatsappIcon} />
-                        </a >
-                        <a href="#">
-                            <img alt='a' src={VkIcon} />
-                        </a >
-                        <a href="#">
-                            <img alt='a' src={Call} />
-                        </a>
+                        {/*<a href="#">*/}
+                        {/*    <img alt='a' src={InstagramIcon} />*/}
+                        {/*</a>*/}
+                        {/*<a href="#">*/}
+                        {/*    <img alt='a' src={InstagramIcon} />*/}
+                        {/*</a >*/}
+                        {/*<a href="#">*/}
+                        {/*    <img alt='a' src={TelegramIcon} />*/}
+                        {/*</a>*/}
+                        {/*<a href="#">*/}
+                        {/*    <img alt='a' src={WhatsappIcon} />*/}
+                        {/*</a >*/}
+                        {/*<a href="#">*/}
+                        {/*    <img alt='a' src={VkIcon} />*/}
+                        {/*</a >*/}
+                        {/*<a href="#">*/}
+                        {/*    <img alt='a' src={Call} />*/}
+                        {/*</a>*/}
                     </div>
                     <button onClick={showMap} className="card-map btn">
                         {showDescr ? "Карта" : "Описание"}
