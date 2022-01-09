@@ -4,11 +4,11 @@ import PetPhoto from "../cardItem/img/photo_2022-01-05_18-00-35.jpg";
 // import PetPhoto2 from "../cardItem/img/pet2.jpg";
 // import PetPhoto3 from "../cardItem/img/pet3.jpg";
 // import FacebookIcon from "../cardItem/img/facebook.png";
-import InstagramIcon from "../cardItem/img/instagram.png";
-import TelegramIcon from "../cardItem/img/telegram.png";
-import WhatsappIcon from "../cardItem/img/whatsapp.png";
-import VkIcon from "../cardItem/img/vk.png";
-import Call from "../cardItem/img/outgoing-call.png";
+// import InstagramIcon from "../cardItem/img/instagram.png";
+// import TelegramIcon from "../cardItem/img/telegram.png";
+// import WhatsappIcon from "../cardItem/img/whatsapp.png";
+// import VkIcon from "../cardItem/img/vk.png";
+// import Call from "../cardItem/img/outgoing-call.png";
 import "./cards.css";
 
 const CardItem = () => {
