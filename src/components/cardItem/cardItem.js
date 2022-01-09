@@ -28,10 +28,10 @@ const CardItem = () => {
                         </div>
                         <div className="card-right">
                             <h2 className="card-title">Пропал кот</h2>
-                            <div className="tags">
+                            {/* <div className="tags">
                                 <span className="card-tag-name">Теги:</span>
                                 <button className="card-tag">кот</button>
-                            </div>
+                            </div> */}
                             <span className="lost-date">
                                 Дата пропажи: 31.12.21
                             </span>

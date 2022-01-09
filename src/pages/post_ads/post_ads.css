@@ -1,0 +1,72 @@
+.add {
+    padding: 50px 0;
+}
+
+.add-form {
+    text-align: center;
+    border: none;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #d9e4e2;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.add-title {
+    margin-bottom: 30px;
+}
+
+.add-place {
+    margin-bottom: 15px;
+}
+
+.add-contacts {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.btn-geo {
+    border: none;
+    background-color: transparent;
+    /* border: 2px solid #f87661;
+    padding: 5px 15px; */
+}
+
+.btn-add {
+    background-color: #f87661;
+    padding: 12px 23px;
+    font-weight: 700;
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 40px;
+}
+
+.btn-yes {
+    background-color: #f87661;
+    padding: 12px 23px;
+    font-weight: 700;
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.btn-no {
+    background-color: white;
+    padding: 12px 23px;
+    font-weight: 700;
+    color: #f87661;
+    font-size: 14px;
+    line-height: 20px;
+    border: 2px solid #f87661;
+}
+
+.modal-content {
+    background-color: #fffaf5;
+    border: none;
+}
+
+.modal-header {
+    align-items: flex-start;
+}
