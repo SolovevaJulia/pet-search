@@ -4,6 +4,7 @@ const CardsWrapper = () => {
     return (
         <section className="card-section">
             <CardItem/>
+            <CardItem/>
         </section>
     );
 };
