@@ -31,8 +31,6 @@ const DevIlya = () => {
         }
     }
 
-    // Отправляем все данные на бэкенд
-
     const setFormsFields = (e) => {
         e.preventDefault();
         const objectForm = {
