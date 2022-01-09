@@ -54,8 +54,11 @@ const CardItem = () => {
             <div className="card-bottom">
                 <div className="card-buttons">
                     <div className="contacts">
+                        {/*<a>*/}
+                        {/*    <img src={FacebookIcon} />*/}
+                        {/*</a>*/}
                         <a>
-                            <img src={FacebookIcon} />
+                            <img src={InstagramIcon} />
                         </a>
                         <a>
                             <img src={InstagramIcon} />
