@@ -12,9 +12,9 @@ const PostAds = () => {
                                 Добавьте объявление о питомце
                             </h2>
                             <div className="d-flex">
-                                <div class="input-group mb-3">
+                                <div className="input-group mb-3">
                                     <select
-                                        class="form-select"
+                                        className="form-select"
                                         id="inputGroupSelect01"
                                     >
                                         <option selected>
@@ -24,9 +24,9 @@ const PostAds = () => {
                                         <option value="2">Найден</option>
                                     </select>
                                 </div>
-                                <div class="input-group mb-3">
+                                <div className="input-group mb-3">
                                     <select
-                                        class="form-select"
+                                        className="form-select"
                                         id="inputGroupSelect01"
                                     >
                                         <option selected>Питомец...</option>
@@ -34,9 +34,9 @@ const PostAds = () => {
                                         <option value="2">Кошка</option>
                                     </select>
                                 </div>
-                                <div class="input-group mb-3">
+                                <div className="input-group mb-3">
                                     <select
-                                        class="form-select"
+                                        className="form-select"
                                         id="inputGroupSelect01"
                                     >
                                         <option selected>
@@ -47,41 +47,41 @@ const PostAds = () => {
                                     </select>
                                 </div>
                             </div>
-                            <div class="input-group mb-3">
-                                <input
-                                    type="file"
-                                    class="form-control"
-                                    id="inputGroupFile02"
-                                />
+                            <div className="input-group mb-3">
                                 <label
-                                    class="input-group-text"
-                                    for="inputGroupFile02"
+                                    className="input-group-text"
+                                    htmlFor="inputGroupFile02"
                                 >
                                     Загрузить фотографию
                                 </label>
+                                <input
+                                    type="file"
+                                    className="form-control"
+                                    id="inputGroupFile02"
+                                />
                             </div>
-                            <div class="input-group add-place">
-                                <span class="input-group-text">
+                            <div className="input-group add-place">
+                                <span className="input-group-text">
                                     Место пропажи/находки
                                 </span>
                                 <input
                                     type="text"
                                     aria-label="Street"
-                                    class="form-control"
+                                    className="form-control"
                                     placeholder="Улица"
                                 />
                                 <input
                                     type="text"
                                     aria-label="House"
-                                    class="form-control"
+                                    className="form-control"
                                     placeholder="Номер дома"
                                 />
                             </div>
-                            <div class="input-group">
+                            <div className="input-group">
                                 <textarea
-                                    class="form-control"
-                                    placeholder="Описание"
-                                ></textarea>
+                                className="form-control"
+                                placeholder="Описание"
+                                />
                             </div>
                             <div className="add-contacts">
                                 <div>TODO Контакты</div>
@@ -93,10 +93,10 @@ const PostAds = () => {
                                     type="button"
                                 >
                                     Добавить геолокацию:
-                                    <img src={Geo} />
+                                    <img alt="a" src={Geo} />
                                 </button>
                             </div>
-                            <button type="button" class="btn btn-add">
+                            <button type="button" className="btn btn-add">
                                 Добавить запись
                             </button>
                         </form>
@@ -104,37 +104,37 @@ const PostAds = () => {
                 </div>
             </div>
             <div
-                class="modal fade"
+                className="modal fade"
                 id="staticBackdrop"
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-labelledby="staticBackdropLabel"
                 aria-hidden="true"
             >
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="staticBackdropLabel">
                                 Вы действительно хотите поделиться геолокацией?
                             </h5>
                             <button
-                                type="button"
-                                class="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"
-                            ></button>
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                            />
                         </div>
                         {/* <div class="modal-body">...</div> */}
-                        <div class="modal-footer">
+                        <div className="modal-footer">
                             <button
                                 type="button"
-                                class="btn btn-no"
+                                className="btn btn-no"
                                 data-bs-dismiss="modal"
                             >
                                 Закрыть
                             </button>
-                            <button type="button" class="btn btn-yes">
+                            <button type="button" className="btn btn-yes">
                                 Даю согласие
                             </button>
                         </div>

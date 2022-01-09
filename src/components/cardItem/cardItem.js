@@ -57,22 +57,22 @@ const CardItem = () => {
                         {/*<a>*/}
                         {/*    <img src={FacebookIcon} />*/}
                         {/*</a>*/}
-                        <a>
+                        <a href="#">
                             <img alt='a' src={InstagramIcon} />
                         </a>
-                        <a>
+                        <a href="#">
                             <img alt='a' src={InstagramIcon} />
-                        </a>
-                        <a>
+                        </a >
+                        <a href="#">
                             <img alt='a' src={TelegramIcon} />
                         </a>
-                        <a>
+                        <a href="#">
                             <img alt='a' src={WhatsappIcon} />
-                        </a>
-                        <a>
+                        </a >
+                        <a href="#">
                             <img alt='a' src={VkIcon} />
-                        </a>
-                        <a>
+                        </a >
+                        <a href="#">
                             <img alt='a' src={Call} />
                         </a>
                     </div>
