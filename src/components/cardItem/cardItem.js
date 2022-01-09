@@ -59,6 +59,9 @@ const CardItem = () => {
                         </a>
                         <a href="#">
                             <img alt='a' src={InstagramIcon} />
+                        </a>
+                        <a href="#">
+                            <img alt='a' src={InstagramIcon} />
                         </a >
                         <a href="#">
                             <img alt='a' src={TelegramIcon} />
