@@ -54,6 +54,7 @@ const CardItem = () => {
             <div className="card-bottom">
                 <div className="card-buttons">
                     <div className="contacts">
+                        {/*TODO LINKS*/}
                         <img alt='facebook' src={FacebookIcon} />
                         <img alt='yandex' src={InstagramIcon} />
                         <img alt='vk' src={InstagramIcon} />
