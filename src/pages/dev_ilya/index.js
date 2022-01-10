@@ -111,7 +111,7 @@ const DevIlya = () => {
                                     className="form-control"
                                     placeholder="Описание"
                                     onChange={(e) => setDescription(e.target.value)}
-                                ></textarea>
+                                />
                             </div>
                             <div className="add-contacts">
                                 <input
@@ -158,7 +158,7 @@ const DevIlya = () => {
                                 className="btn-close"
                                 data-bs-dismiss="modal"
                                 aria-label="Close"
-                            ></button>
+                            />
                         </div>
                         {/* <div class="modal-body">...</div> */}
                         <div className="modal-footer">
