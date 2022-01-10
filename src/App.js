@@ -2,8 +2,9 @@ import React from "react";
 // import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 // css стили
-import Header from "./components/header/header";
 import "./index.css";
+//Components
+import Header from "./components/header/header";
 import MainRouter from "./routers/index";
 
 import LocalServiceWorkerRegister from './sw-register';

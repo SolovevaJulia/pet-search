@@ -54,27 +54,13 @@ const CardItem = () => {
             <div className="card-bottom">
                 <div className="card-buttons">
                     <div className="contacts">
-                        <a href="#">
-                            <img src={FacebookIcon} />
-                        </a>
-                        <a href="#">
-                            <img alt='a' src={InstagramIcon} />
-                        </a>
-                        <a href="#">
-                            <img alt='a' src={InstagramIcon} />
-                        </a >
-                        <a href="#">
-                            <img alt='a' src={TelegramIcon} />
-                        </a>
-                        <a href="#">
-                            <img alt='a' src={WhatsappIcon} />
-                        </a >
-                        <a href="#">
-                            <img alt='a' src={VkIcon} />
-                        </a >
-                        <a href="#">
-                            <img alt='a' src={Call} />
-                        </a>
+                        <img alt='facebook' src={FacebookIcon} />
+                        <img alt='yandex' src={InstagramIcon} />
+                        <img alt='vk' src={InstagramIcon} />
+                        <img alt='instagram' src={TelegramIcon} />
+                        <img alt='whatsapp' src={WhatsappIcon} />
+                        <img alt='icon' src={VkIcon} />
+                        <img alt='mail' src={Call} />
                     </div>
                     <button onClick={showMap} className="card-map btn">
                         {showDescr ? "Карта" : "Описание"}

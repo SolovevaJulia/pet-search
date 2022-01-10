@@ -128,7 +128,7 @@ const DevIlya = () => {
                                     type="button"
                                 >
                                     Добавить геолокацию:
-                                    <img src={Geo}/>
+                                    <img alt="geo" src={Geo}/>
                                 </button>
                             </div>
                             <button type='submit' className="btn btn-add">
