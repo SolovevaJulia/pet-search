@@ -7,7 +7,7 @@ import "./index.css";
 import Header from "./components/header/header";
 import MainRouter from "./routers/index";
 
-import LocalServiceWorkerRegister from './sw-register';
+import LocalServiceWorkerRegister from '../src/sw-register';
 LocalServiceWorkerRegister();
 
 

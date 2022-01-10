@@ -3,12 +3,12 @@
   "name": "Поиск Животных",
   "icons": [
     {
-      "src": "dog-logo.png",
+      "src": "iconLogoPWA.svg",
       "type": "image/png",
-      "sizes": "64x64"
+      "sizes": "341x341"
     }
   ],
-  "start_url": "pet-search",
+  "start_url": "./pet-search",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

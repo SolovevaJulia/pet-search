@@ -67,7 +67,7 @@
     cursor: pointer;
 }
 
-.contacts > a > img {
+.contacts > img {
     width: 30px;
     margin-right: 5px;
 }

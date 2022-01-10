@@ -1,12 +1,15 @@
 export default function LocalServiceWorkerRegister() {
     const swPath = `${process.env.PUBLIC_URL}/service-worker.js`;
 
-
     if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-            navigator.serviceWorker.register(swPath).then(registration => {
-                console.log('Service worker registered', registration);
-            });
+        navigator.serviceWorker.register(swPath)
+            .then((reg) => {
+                // регистрация сработала
+                console.log('Registration succeeded. Scope is ' + reg.scope);
+            }).catch((error) => {
+            // регистрация прошла неудачно
+            console.log('Registration failed with ' + error);
         });
     }
 }
+
