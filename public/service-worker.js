@@ -12,9 +12,9 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
-    console.log('Активирован', event);
+    console.log('Активирован?', event);
 });
 
 self.addEventListener('fetch', (event) => {
-    console.log('Происходит запрос на сервер', event);
+    console.log('Происходит запрос на сервер...', event);
 });
