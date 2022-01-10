@@ -10,6 +10,7 @@ LocalServiceWorkerRegister();
 
 
 function App() {
+    console.log("process.env.", process.env.REACT_APP_URL_API)
     return (
         <section className="App">
             <Header />
