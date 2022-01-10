@@ -10,7 +10,7 @@ import Home from "../pages/home";
 const MainRoutes = () => {
     return (
         <Routes>
-            <Route path="pet-search/" element={<Home />} />
+            <Route path="pet-search/" element={<Home />}/>
             <Route path="pet-search/feeds" element={<Feeds />} />
             {/*    Тест разработка, удалить по завершению проекта!*/}
             <Route path="pet-search/dev_ilya" element={<DevIlya />} />

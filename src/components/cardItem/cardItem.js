@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import PetPhoto from "../cardItem/img/photo_2022-01-05_18-00-35.jpg";
 // import PetPhoto2 from "../cardItem/img/pet2.jpg";
 // import PetPhoto3 from "../cardItem/img/pet3.jpg";
-// import FacebookIcon from "../cardItem/img/facebook.png";
-// import InstagramIcon from "../cardItem/img/instagram.png";
-// import TelegramIcon from "../cardItem/img/telegram.png";
-// import WhatsappIcon from "../cardItem/img/whatsapp.png";
-// import VkIcon from "../cardItem/img/vk.png";
-// import Call from "../cardItem/img/outgoing-call.png";
+import FacebookIcon from "../cardItem/img/facebook.png";
+import InstagramIcon from "../cardItem/img/instagram.png";
+import TelegramIcon from "../cardItem/img/telegram.png";
+import WhatsappIcon from "../cardItem/img/whatsapp.png";
+import VkIcon from "../cardItem/img/vk.png";
+import Call from "../cardItem/img/outgoing-call.png";
 import "./cards.css";
 
 const CardItem = () => {
@@ -54,27 +54,27 @@ const CardItem = () => {
             <div className="card-bottom">
                 <div className="card-buttons">
                     <div className="contacts">
-                        {/*<a>*/}
-                        {/*    <img src={FacebookIcon} />*/}
-                        {/*</a>*/}
-                        {/*<a href="#">*/}
-                        {/*    <img alt='a' src={InstagramIcon} />*/}
-                        {/*</a>*/}
-                        {/*<a href="#">*/}
-                        {/*    <img alt='a' src={InstagramIcon} />*/}
-                        {/*</a >*/}
-                        {/*<a href="#">*/}
-                        {/*    <img alt='a' src={TelegramIcon} />*/}
-                        {/*</a>*/}
-                        {/*<a href="#">*/}
-                        {/*    <img alt='a' src={WhatsappIcon} />*/}
-                        {/*</a >*/}
-                        {/*<a href="#">*/}
-                        {/*    <img alt='a' src={VkIcon} />*/}
-                        {/*</a >*/}
-                        {/*<a href="#">*/}
-                        {/*    <img alt='a' src={Call} />*/}
-                        {/*</a>*/}
+                        <a href="#">
+                            <img src={FacebookIcon} />
+                        </a>
+                        <a href="#">
+                            <img alt='a' src={InstagramIcon} />
+                        </a>
+                        <a href="#">
+                            <img alt='a' src={InstagramIcon} />
+                        </a >
+                        <a href="#">
+                            <img alt='a' src={TelegramIcon} />
+                        </a>
+                        <a href="#">
+                            <img alt='a' src={WhatsappIcon} />
+                        </a >
+                        <a href="#">
+                            <img alt='a' src={VkIcon} />
+                        </a >
+                        <a href="#">
+                            <img alt='a' src={Call} />
+                        </a>
                     </div>
                     <button onClick={showMap} className="card-map btn">
                         {showDescr ? "Карта" : "Описание"}
