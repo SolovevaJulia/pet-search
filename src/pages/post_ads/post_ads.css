@@ -35,7 +35,7 @@
 
 .btn-add {
     background-color: #f87661;
-    padding: 12px 23px;
+    padding: 8px 23px;
     font-weight: 700;
     color: white;
     font-size: 14px;
@@ -45,7 +45,7 @@
 
 .btn-yes {
     background-color: #f87661;
-    padding: 12px 23px;
+    padding: 8px 23px;
     font-weight: 700;
     color: white;
     font-size: 14px;
@@ -54,7 +54,7 @@
 
 .btn-no {
     background-color: white;
-    padding: 12px 23px;
+    padding: 8px 23px;
     font-weight: 700;
     color: #f87661;
     font-size: 14px;

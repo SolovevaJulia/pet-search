@@ -74,7 +74,7 @@
 
 .card-map {
     background-color: #f87661;
-    padding: 12px 23px;
+    padding: 8px 23px;
     font-weight: 700;
     color: white;
     font-size: 14px;
@@ -98,6 +98,5 @@
     .card-right {
         width: 100%;
         margin-top: 20px;
-
     }
 }
