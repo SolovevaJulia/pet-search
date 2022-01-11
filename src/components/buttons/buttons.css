@@ -1,6 +1,6 @@
 .btn-logo {
     background-color: #f87661;
-    padding: 12px 23px;
+    padding: 8px 23px;
     font-weight: 700;
     color: white;
     font-size: 14px;
@@ -8,15 +8,12 @@
     margin-right: 10px;
 }
 
-
 .btn-enter {
     background-color: transparent;
     border: 2px solid #f87661;
-    padding: 12px 23px;
+    padding: 8px 23px;
     font-weight: 700;
     color: #f87661;
     font-size: 14px;
     line-height: 20px;
 }
-
-
