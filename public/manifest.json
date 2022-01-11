@@ -8,7 +8,7 @@
       "sizes": "341x341"
     }
   ],
-  "start_url": "./pet-search",
+  "start_url": "pet-search",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
