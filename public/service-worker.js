@@ -2,10 +2,13 @@ const CACHE = 'network-or-cache-v1';
 const timeout = 400;
 
 let cacheUrls = [
-    "static/css/main.c16ed571.chunk.css",
-    "static/js/1.2dd891c4.chunk.js",
-    "static/js/main.182aaaa5.chunk.js",
-    "static/js/runtime~main.229c360f.js"
+    '/',
+    '/build/static/css/*.css',
+    '/build/static/css/**/*.css',
+    '/build/static/js/*.js',
+    '/build/static/js/**/*.js',
+    '/build/media/**/*.jpg',
+    '/build/media/*.jpg'
 ];
 
 
