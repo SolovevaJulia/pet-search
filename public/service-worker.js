@@ -3,12 +3,12 @@ const timeout = 400;
 
 let cacheUrls = [
     '/',
-    '/build/static/css/*.css',
-    '/build/static/css/**/*.css',
-    '/build/static/js/*.js',
-    '/build/static/js/**/*.js',
-    '/build/media/**/*.jpg',
-    '/build/media/*.jpg'
+    'https://ilyalesunov.gitlab.io/pet-search/static/css/*.css',
+    'https://ilyalesunov.gitlab.io/pet-search/build/static/css/**/*.css',
+    'https://ilyalesunov.gitlab.io/pet-search/build/static/js/*.js',
+    'https://ilyalesunov.gitlab.io/pet-search/build/static/js/**/*.js',
+    'https://ilyalesunov.gitlab.io/pet-search/build/media/**/*.jpg',
+    'https://ilyalesunov.gitlab.io/pet-search/build/media/*.jpg'
 ];
 
 
