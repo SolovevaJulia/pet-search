@@ -8,7 +8,7 @@ const Reg = () => {
                     <div className="col-8">
                         <form>
                             <h1 className="reg-title">Регистрация</h1>
-                            <div class="mb-3">
+                            {/* <div class="mb-3">
                                 <label
                                     for="exampleInputEmail1"
                                     class="form-label"
@@ -21,7 +21,7 @@ const Reg = () => {
                                     id="exampleInputEmail1"
                                     aria-describedby="emailHelp"
                                 />
-                            </div>
+                            </div> */}
                             <div class="mb-3">
                                 <label
                                     for="exampleInputEmail1"
