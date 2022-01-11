@@ -1,0 +1,17 @@
+.btn-auth {
+    background-color: #f87661;
+    padding: 8px 23px;
+    font-weight: 700;
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+    margin-right: 10px;
+}
+
+.auth-title {
+    margin-bottom: 30px;
+}
+
+.auth {
+    padding: 40px 0;
+}

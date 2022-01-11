@@ -7,6 +7,8 @@ import DevIlya from "../pages/dev_ilya";
 //Тест разработка, удалить по завершению проекта!
 import PostAds from "../pages/post_ads";
 import Home from "../pages/home";
+import Auth from "../pages/auth";
+import Reg from "../pages/reg";
 const MainRoutes = () => {
     return (
         <Routes>
@@ -16,6 +18,8 @@ const MainRoutes = () => {
             <Route path="pet-search/dev_ilya" element={<DevIlya />} />
             {/*    Тест разработка, удалить по завершению проекта!*/}
             <Route path="pet-search/post_ads" element={<PostAds />} />
+            <Route path="pet-search/auth" element={<Auth />} />
+            <Route path="pet-search/reg" element={<Reg />} />
         </Routes>
     );
 };
