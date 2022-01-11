@@ -15,7 +15,7 @@ export default function LocalServiceWorkerRegister() {
                 // регистрация сработала
                 console.log('Registration succeeded. Scope is ' + reg.scope);
             }).catch((error) => {
-            // регистрация прошла неудачно ?
+            // регистрация прошла неудачно
             console.log('Registration failed with ' + error);
         });
     }
