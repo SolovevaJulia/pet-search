@@ -1,14 +1,22 @@
 const CACHE = 'network-or-cache-v1';
 const timeout = 400;
+
+const cacheUrls = [
+    '/',
+    '/build/static/css/*.css',
+    '/build/static/css/**/*.css',
+    '/build/static/js/*.js',
+    '/build/static/js/**/*.js',
+    '/build/media/**/*.jpg',
+    '/build/media/*.jpg'
+];
+
+
 self.addEventListener('install', (event) => {
     console.log('Установлен', event);
     event.waitUntil(
         caches.open('v1').then((cache) => {
-            return cache.addAll([
-                'iconLogoPWA',
-                '/static/css/main.f7c50ba3.css',
-                '/static/js/main.822851b2.js'
-            ]);
+            return cache.addAll(cacheUrls);
         })
     );
 });
