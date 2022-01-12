@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 //Pages
 import Feeds from "../pages/feeds/index";
@@ -9,6 +9,8 @@ import PostAds from "../pages/post_ads";
 import Home from "../pages/home";
 import Auth from "../pages/auth";
 import Reg from "../pages/reg";
+import PageNotFound from "../pages/404";
+
 const MainRoutes = () => {
     return (
         <Routes>
@@ -20,6 +22,7 @@ const MainRoutes = () => {
             <Route path="pet-search/post_ads" element={<PostAds />} />
             <Route path="pet-search/auth" element={<Auth />} />
             <Route path="pet-search/reg" element={<Reg />} />
+            <Route path="*" element={<PageNotFound />} />
         </Routes>
     );
 };

@@ -1,6 +1,12 @@
+import React, { useState } from "react";
 import "./auth.css";
 
 const Auth = () => {
+    const [email, setEmail] = useState("");
+    console.log("email", email);
+    const [pass, setPass] = useState("");
+    console.log("pass", pass);
+
     return (
         <section className="auth">
             <div className="container">
@@ -20,6 +26,7 @@ const Auth = () => {
                                     class="form-control"
                                     id="exampleInputEmail1"
                                     aria-describedby="emailHelp"
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                                 {/* <div id="emailHelp" class="form-text">
                                     We'll never share your email with anyone
@@ -37,6 +44,7 @@ const Auth = () => {
                                     type="password"
                                     class="form-control"
                                     id="exampleInputPassword1"
+                                    onChange={(e) => setPass(e.target.value)}
                                 />
                             </div>
                             {/* <div class="mb-3 form-check">
