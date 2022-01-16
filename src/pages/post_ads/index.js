@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 
 import Geo from "../post_ads/img/geo.png";
 import "./post_ads.css";
@@ -12,6 +12,9 @@ const PostAds = () => {
     const [descr, setDescr] = useState("");
     const [lat, setLat] = useState("");
     const [long, setLong] = useState("");
+    const [file, setFile] = useState([])
+    const [image, setImage] = useState(null)
+
     console.log(
         "announcementType",
         announcementType,
@@ -26,9 +29,21 @@ const PostAds = () => {
         "lat",
         lat,
         "long",
-        long
+        long,
+        "file",
+        file
     );
+    useEffect(  () => {
+        axios.get('/api/feeds/get')
+            .then(async (data) => {
+                setImage(data.data.image[1])
 
+            })
+            .catch((error) => {
+                console.log('error', error)
+            })
+    },[])
+    console.log('image', image)
     const getGeoUser = () => {
         console.log("Я сработал");
         if (navigator.geolocation) {
@@ -43,42 +58,75 @@ const PostAds = () => {
 
     const sendDataPostApi = (e) => {
         e.preventDefault();
-        const collectingObjectFormAds = {
-            info: {
-                announcementType: announcementType,
-                pet: pet,
-                street: street,
-                house: house,
-                descr: descr,
-            },
-            geo: {
-                lat: lat,
-                long: long,
-            },
-        };
-        console.log("Сбор данных", collectingObjectFormAds);
 
+        const formImages = new FormData()
+        let config = {
+            header: {'content-type': 'multypart/form-data'}
+        }
+
+        console.log('file', file)
+        Object.values(file).forEach((item) => {
+            formImages.append("name", item.name)
+            formImages.append("file", item)
+
+            console.log('item', item)
+        })
+
+        // const collectingObjectFormAds = {
+        //     info: {
+        //         announcementType: announcementType,
+        //         pet: pet,
+        //         street: street,
+        //         house: house,
+        //         descr: descr,
+        //         image: image.files[0].name
+        //     },
+        //     geo: {
+        //         lat: lat,
+        //         long: long,
+        //     },
+        // };
+        // console.log("Сбор данных");
+        // // Отправляем данные с полей на бэкенд
+        // axios
+        //     .post("/api/feeds/create", collectingObjectFormAds)
+        //     .then((data) => {
+        //         console.log(data.data);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     })
+        //     .finally(() => {
+        //         console.log("Сработало");
+        //     });
+        //
+        // Отправляем фото на бэкенд
         axios
-            .post("/api/feeds/create", collectingObjectFormAds)
+            .post("/api/images/upload", formImages)
             .then((data) => {
                 console.log(data.data);
-                alert(data.data.success);
             })
             .catch((error) => {
                 console.log(error);
-                alert(error);
             })
             .finally(() => {
                 console.log("Сработало");
             });
     };
 
+
+
+
     return (
         <section className="add">
             <div className="container">
+                <div>
+                    <img src={image} alt="картинка"/>
+                </div>
                 <div className="row justify-content-center">
                     <div className="col-8">
                         <form
+                            encType='multipart/form-data'
                             className="add-form"
                             onSubmit={(e) => sendDataPostApi(e)}
                         >
@@ -94,7 +142,7 @@ const PostAds = () => {
                                             setAnnouncementType(e.target.value)
                                         }
                                     >
-                                        <option selected>
+                                        <option>
                                             Тип объявления...
                                         </option>
                                         <option value="Пропал">Пропал</option>
@@ -107,7 +155,7 @@ const PostAds = () => {
                                         id="inputGroupSelect01"
                                         onChange={(e) => setPet(e.target.value)}
                                     >
-                                        <option selected>Питомец...</option>
+                                        <option>Питомец...</option>
                                         <option value="Собака">Собака</option>
                                         <option value="Кошка">Кошка</option>
                                         <option value="Другой">Другой</option>
@@ -118,7 +166,7 @@ const PostAds = () => {
                                         className="form-select"
                                         id="inputGroupSelect01"
                                     >
-                                        <option selected>
+                                        <option>
                                             Когда пропал/найден...
                                         </option>
                                         <option value="1">Собака</option>
@@ -129,14 +177,22 @@ const PostAds = () => {
                             <div className="input-group mb-3">
                                 <label
                                     className="input-group-text"
-                                    htmlFor="inputGroupFile02"
+                                    htmlFor="file"
+
                                 >
                                     Загрузить фотографию
                                 </label>
                                 <input
+                                    encType="multipart/form-data"
+                                    onChange={event => {
+                                        const file = event.target.files;
+                                        setFile(file)
+                                    }}
                                     type="file"
+                                    multiple
+                                    accept=".jpg"
                                     className="form-control"
-                                    id="inputGroupFile02"
+                                    id="file"
                                 />
                             </div>
                             <div className="input-group add-place">
