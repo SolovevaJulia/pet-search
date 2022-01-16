@@ -10,6 +10,7 @@ import Home from "../pages/home";
 import Auth from "../pages/auth";
 import Reg from "../pages/reg";
 import PageNotFound from "../pages/404";
+import Profile from "../pages/profile";
 
 const MainRoutes = () => {
     return (
@@ -23,6 +24,7 @@ const MainRoutes = () => {
             <Route path="pet-search/auth" element={<Auth />} />
             <Route path="pet-search/reg" element={<Reg />} />
             <Route path="*" element={<PageNotFound />} />
+            <Route path="pet-search/profile" element={<Profile />} />
         </Routes>
     );
 };
