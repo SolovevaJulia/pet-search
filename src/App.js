@@ -7,9 +7,8 @@ import "./index.css";
 import Header from "./components/header/header";
 import MainRouter from "./routers/index";
 
-import LocalServiceWorkerRegister from '../src/sw-register';
-LocalServiceWorkerRegister();
-
+// import LocalServiceWorkerRegister from '../src/sw-register';
+// LocalServiceWorkerRegister();
 
 function App() {
     return (
