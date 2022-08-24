@@ -15,70 +15,71 @@
             >
               Создайте аккаунт
             </h1>
-            <form class="space-y-4 md:space-y-6" action="#">
+            <form
+              @submit.prevent="register"
+              class="space-y-4 md:space-y-6"
+              action="#"
+            >
               <div>
-                <div>
-                  <label
-                    for="email"
-                    class="block mb-2 text-sm font-medium text-gray-900"
-                    >Email</label
-                  >
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="name@company.com"
-                    required=""
-                  />
-                </div>
+                <label
+                  for="email"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Email</label
+                >
+                <input
+                  v-model="email"
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  placeholder="name@company.com"
+                  required=""
+                />
               </div>
-
               <div>
-                <div>
-                  <label
-                    for="password"
-                    class="block mb-2 text-sm font-medium text-gray-900"
-                    >Пароль</label
-                  >
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="••••••••"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    required=""
-                  />
-                </div>
+                <label
+                  for="password"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Пароль</label
+                >
+                <input
+                  v-model="password"
+                  type="password"
+                  name="password"
+                  id="password"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  required=""
+                />
+              </div>
+              <div>
+                <label
+                  for="confirmPassword"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Повторите пароль</label
+                >
+                <input
+                  v-if="this.password !== this.confirmPassword"
+                  v-model="confirmPassword"
+                  type="password"
+                  name="confirmPassword"
+                  id="confirmPassword"
+                  class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
+                  required=""
+                />
 
-                <div>
-                  <label
-                    for="confirm-password"
-                    class="block mb-2 text-sm font-medium text-gray-900"
-                    >Повторите пароль</label
-                  >
-                  <input
-                    v-model="confirmPassword"
-                    type="confirm-password"
-                    name="confirm-password"
-                    id="confirmpassword"
-                    placeholder="••••••••"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    required=""
-                  />
-                  <p class="mt-2 text-sm text-red-600">
-                    <span class="font-medium">Что-то пошло не так!</span> Пароли
-                    не совпадают
-                  </p>
-                </div>
+                <span v-if="this.password !== this.confirmPassword"
+                  >Пароли не совпадают</span
+                >
 
-                <!-- <div>
-                  <label
-                    for="error"
-                    class="block mb-2 text-sm font-medium text-red-700"
-                    >Повторите пароль</label
-                  >
-                </div> -->
+                <input
+                  v-else
+                  v-model="confirmPassword"
+                  type="password"
+                  name="confirmPassword"
+                  id="confirmPassword"
+                  class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+                  required=""
+                />
               </div>
 
               <div class="flex items-start">
@@ -92,7 +93,9 @@
                   />
                 </div>
                 <div class="ml-3 text-sm">
-                  <label for="terms" class="font-light text-gray-500"
+                  <label
+                    for="terms"
+                    class="font-light text-gray-500 dark:text-gray-300"
                     >Я согласен с
                     <a
                       class="font-medium text-primary-600 hover:underline"
@@ -102,7 +105,21 @@
                   >
                 </div>
               </div>
+
               <button
+                v-if="
+                  this.password !== this.confirmPassword ||
+                  !this.password ||
+                  !this.email
+                "
+                disabled
+                type="submit"
+                class="w-full text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              >
+                Создать аккаунт
+              </button>
+              <button
+                v-else
                 type="submit"
                 class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
@@ -111,7 +128,7 @@
               <p class="text-sm font-light text-gray-500">
                 Уже есть аккаунт?
                 <a href="#" class="font-medium text-primary-600 hover:underline"
-                  >Login</a
+                  >Войти</a
                 >
               </p>
             </form>
@@ -134,8 +151,14 @@ export default defineComponent({
     return {
       email: "",
       password: "",
-      confirmpassword: "",
+      confirmPassword: "",
     };
+  },
+
+  methods: {
+    register() {
+      alert("Регистрация прошла успешно");
+    },
   },
 });
 </script>
