@@ -91,9 +91,12 @@
               </button>
               <p class="text-sm font-light text-gray-500">
                 Еще нет аккаунта?
-                <a href="#" class="font-medium text-primary-600 hover:underline"
-                  >Зарегистрироваться</a
+                <router-link
+                  to="/reg"
+                  class="font-medium text-primary-600 hover:underline"
                 >
+                  Зарегистрироваться
+                </router-link>
               </p>
             </form>
           </div>

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import FeedsPage from "../views/Feeds-Page.vue";
 import AuthPage from "../views/Auth-Page.vue";
 import RegPage from "../views/Reg-Page.vue";
+import ChangePass from "../views/Change-Pass.vue";
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: "/reg",
     name: "reg",
     component: RegPage,
+  },
+  {
+    path: "/change-password",
+    name: "changePass",
+    component: ChangePass,
   },
 ];
 
