@@ -15,11 +15,7 @@
             >
               Войдите в ваш аккаунт
             </h1>
-            <form
-              @submit.prevent="auth"
-              class="space-y-4 md:space-y-6"
-              action="#"
-            >
+            <form @submit.prevent="auth" class="space-y-4 md:space-y-6">
               <div>
                 <label
                   for="email"
@@ -77,7 +73,7 @@
               <button
                 v-if="!this.email || !this.password"
                 type="submit"
-                class="w-full text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                class="w-full text-white bg-primary-400 dark:bg-primary-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 disabled
               >
                 Войти

@@ -15,7 +15,8 @@
             >
               Создайте аккаунт
             </h2>
-            <form @submit.prevent="register" class="space-y-4 md:space-y-6">
+            <form-component @submit.prevent="register"></form-component>
+            <!-- <form @submit.prevent="register" class="space-y-4 md:space-y-6">
               <div>
                 <label
                   for="email"
@@ -118,7 +119,7 @@
                 "
                 disabled
                 type="submit"
-                class="w-full text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                class="w-full text-white bg-gray-400 dark:bg-primary-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
                 Создать аккаунт
               </button>
@@ -137,7 +138,7 @@
                   >Войти</router-link
                 >
               </p>
-            </form>
+            </form> -->
           </div>
         </div>
       </div>
@@ -148,18 +149,19 @@
 <script>
 import ContainerWrapper from "@/components/Container-wrapper.vue";
 import NavBar from "@/components/Nav-Bar.vue";
+import FormComponent from "@/components/Form-Component.vue";
 import { defineComponent } from "@vue/runtime-core";
 
 export default defineComponent({
-  components: { ContainerWrapper, NavBar },
+  components: { ContainerWrapper, NavBar, FormComponent },
 
-  data() {
-    return {
-      email: "",
-      password: "",
-      confirmPassword: "",
-    };
-  },
+  // data() {
+  //   return {
+  //     email: "",
+  //     password: "",
+  //     confirmPassword: "",
+  //   };
+  // },
 
   methods: {
     register() {
