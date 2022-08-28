@@ -15,8 +15,8 @@
             >
               Создайте аккаунт
             </h2>
-            <form-component @submit.prevent="register"></form-component>
-            <!-- <form @submit.prevent="register" class="space-y-4 md:space-y-6">
+            <!-- <form-component @submit.prevent="register"></form-component> -->
+            <form @submit.prevent="register" class="space-y-4 md:space-y-6">
               <div>
                 <label
                   for="email"
@@ -138,7 +138,7 @@
                   >Войти</router-link
                 >
               </p>
-            </form> -->
+            </form>
           </div>
         </div>
       </div>
@@ -149,19 +149,19 @@
 <script>
 import ContainerWrapper from "@/components/Container-wrapper.vue";
 import NavBar from "@/components/Nav-Bar.vue";
-import FormComponent from "@/components/Form-Component.vue";
+// import FormComponent from "@/components/Form-Component.vue";
 import { defineComponent } from "@vue/runtime-core";
 
 export default defineComponent({
-  components: { ContainerWrapper, NavBar, FormComponent },
+  components: { ContainerWrapper, NavBar },
 
-  // data() {
-  //   return {
-  //     email: "",
-  //     password: "",
-  //     confirmPassword: "",
-  //   };
-  // },
+  data() {
+    return {
+      email: "",
+      password: "",
+      confirmPassword: "",
+    };
+  },
 
   methods: {
     register() {
