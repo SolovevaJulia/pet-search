@@ -13,11 +13,34 @@
           >Войти</a
         >
         <a
-          href="#"
           class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
+          @click="showModalCard"
           >Оставить объявление</a
         >
       </div>
     </div>
   </nav>
+  <modal-card :modalActive="modalActive"></modal-card>
 </template>
+
+<script>
+import ModalCard from "@/components/Modal-Card.vue";
+import { defineComponent, ref } from "@vue/runtime-core";
+
+export default defineComponent({
+  components: { ModalCard },
+
+  setup() {
+    const modalActive = ref(false);
+
+    const showModalCard = () => {
+      modalActive.value = !modalActive.value;
+    };
+
+    return {
+      modalActive,
+      showModalCard,
+    };
+  },
+});
+</script>
