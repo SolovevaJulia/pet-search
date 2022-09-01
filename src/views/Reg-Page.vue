@@ -19,6 +19,21 @@
             <form @submit.prevent="register" class="space-y-4 md:space-y-6">
               <div>
                 <label
+                  for="login"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Логин</label
+                >
+                <input
+                  v-model="login"
+                  type="login"
+                  name="login"
+                  id="login"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  required=""
+                />
+              </div>
+              <div>
+                <label
                   for="email"
                   class="block mb-2 text-sm font-medium text-gray-900"
                   >Email</label
@@ -150,7 +165,7 @@
 import ContainerWrapper from "@/components/Container-wrapper.vue";
 import NavBar from "@/components/Nav-Bar.vue";
 // import FormComponent from "@/components/Form-Component.vue";
-import { defineComponent } from "@vue/runtime-core";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   components: { ContainerWrapper, NavBar },

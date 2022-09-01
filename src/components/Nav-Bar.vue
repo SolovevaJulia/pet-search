@@ -20,25 +20,25 @@
       </div>
     </div>
   </nav>
-  <modal-card :modalActive="modalActive"></modal-card>
+  <modal-card v-if="modalOpen"></modal-card>
 </template>
 
 <script>
 import ModalCard from "@/components/Modal-Card.vue";
-import { defineComponent, ref } from "@vue/runtime-core";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   components: { ModalCard },
 
   setup() {
-    const modalActive = ref(false);
+    const modalOpen = ref(false);
 
     const showModalCard = () => {
-      modalActive.value = !modalActive.value;
+      modalOpen.value = !modalOpen.value;
     };
 
     return {
-      modalActive,
+      modalOpen,
       showModalCard,
     };
   },
