@@ -30,7 +30,7 @@
                 id="dropdownSearchButton"
                 data-dropdown-toggle="dropdownSearch"
                 data-dropdown-placement="bottom"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
                 type="button"
               >
                 Теги
@@ -54,7 +54,7 @@
               <!-- Dropdown menu -->
               <div
                 id="dropdownSearch"
-                class="hidden z-10 w-60 bg-white rounded shadow dark:bg-gray-700"
+                class="hidden z-10 w-60 bg-white rounded shadow"
               >
                 <div class="p-3">
                   <label for="input-group-search" class="sr-only">Search</label>
@@ -63,7 +63,7 @@
                       class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
                     >
                       <svg
-                        class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                        class="w-5 h-5 text-gray-500"
                         aria-hidden="true"
                         fill="currentColor"
                         viewBox="0 0 20 20"
@@ -79,46 +79,46 @@
                     <input
                       type="text"
                       id="input-group-search"
-                      class="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      class="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                       placeholder="Search user"
                     />
                   </div>
                 </div>
                 <ul
-                  class="overflow-y-auto px-3 pb-3 h-48 text-sm text-gray-700 dark:text-gray-200"
+                  class="overflow-y-auto px-3 pb-3 h-48 text-sm text-gray-700"
                   aria-labelledby="dropdownSearchButton"
                 >
                   <li>
                     <div
-                      class="flex items-center pl-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
+                      class="flex items-center pl-2 rounded hover:bg-gray-100"
                     >
                       <input
                         id="checkbox-item-11"
                         type="checkbox"
                         value=""
-                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500"
                       />
                       <label
                         for="checkbox-item-11"
-                        class="py-2 ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300"
+                        class="py-2 ml-2 w-full text-sm font-medium text-gray-900 rounded"
                         >Кошка/Кот</label
                       >
                     </div>
                   </li>
                   <li>
                     <div
-                      class="flex items-center pl-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
+                      class="flex items-center pl-2 rounded hover:bg-gray-100"
                     >
                       <input
                         checked
                         id="checkbox-item-12"
                         type="checkbox"
                         value=""
-                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2"
                       />
                       <label
                         for="checkbox-item-12"
-                        class="py-2 ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300"
+                        class="py-2 ml-2 w-full text-sm font-medium text-gray-900 rounded"
                         >Собака</label
                       >
                     </div>
@@ -129,13 +129,13 @@
               <div>
                 <label
                   for="description"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+                  class="block mb-2 text-sm font-medium text-gray-900"
                   >Описание</label
                 >
                 <textarea
                   id="description"
                   rows="4"
-                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 ></textarea>
               </div>
 
@@ -162,11 +162,11 @@
                         d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                       ></path>
                     </svg>
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                    <p class="mb-2 text-sm text-gray-500">
                       <span class="font-semibold">Click to upload</span> or drag
                       and drop
                     </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                    <p class="text-xs text-gray-500">
                       SVG, PNG, JPG or GIF (MAX. 800x400px)
                     </p>
                   </div>
@@ -178,7 +178,7 @@
           <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
             <button
               type="button"
-              class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+              class="inline-flex w-full justify-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
             >
               Опубликовать
             </button>
