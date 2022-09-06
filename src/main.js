@@ -7,4 +7,5 @@ import "./index.css";
 
 import store from "./store";
 import "ant-design-vue/dist/antd.css";
+import "flowbite";
 createApp(App).use(store).use(Antd).use(router).mount("#app");
