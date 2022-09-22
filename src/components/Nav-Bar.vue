@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <nav class="border-gray-200 px-4 lg:px-6 py-2.5">
     <div class="flex flex-wrap justify-between items-center mx-auto">
       <a href="#" class="flex items-center">
@@ -47,4 +47,4 @@ export default defineComponent({
     };
   },
 });
-</script>
+</script> -->
