@@ -1,7 +1,5 @@
 <template>
   <container-wrapper>
-    <nav-bar></nav-bar>
-
     <section class="bg-white dark:bg-gray-900">
       <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
@@ -103,10 +101,9 @@
 
 <script>
 import ContainerWrapper from "@/components/Container-wrapper.vue";
-import NavBar from "@/components/Nav-Bar.vue";
 import { defineComponent } from "@vue/runtime-core";
 
 export default defineComponent({
-  components: { ContainerWrapper, NavBar },
+  components: { ContainerWrapper },
 });
 </script>

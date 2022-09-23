@@ -12,19 +12,13 @@
         <router-link to="/auth">
           <a-button>Войти</a-button>
         </router-link>
-        <a-button @click="showModalCard" type="primary"
+        <a-button @click="showModal" type="primary"
           >Оставить объявление</a-button
         >
       </a-space>
     </a-layout-header>
 
-    <a-layout-content :style="{ padding: '0 50px', marginTop: '64px' }">
-      <a-breadcrumb :style="{ margin: '16px 0' }">
-        <a-breadcrumb-item>Home</a-breadcrumb-item>
-        <a-breadcrumb-item>List</a-breadcrumb-item>
-        <a-breadcrumb-item>App</a-breadcrumb-item>
-      </a-breadcrumb>
-
+    <a-layout-content :style="{ padding: '50px', marginTop: '64px' }">
       <div :style="{ background: '#fff', padding: '24px', minHeight: '380px' }">
         <slot></slot>
       </div>
@@ -33,26 +27,32 @@
     <a-layout-footer :style="{ textAlign: 'center' }"></a-layout-footer>
   </a-layout>
 
-  <modal-card v-if="modalOpen" @close="modalOpen = false"></modal-card>
+  <a-modal v-model:visible="visible" title="Basic Modal" @ok="handleOk">
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+  </a-modal>
 </template>
 
 <script>
-import ModalCard from "@/components/Modal-Card.vue";
 import { defineComponent, ref } from "vue";
 export default defineComponent({
-  components: { ModalCard },
-
-  emits: ["close"],
   setup() {
-    const modalOpen = ref(false);
+    const visible = ref(false);
 
-    const showModalCard = () => {
-      modalOpen.value = !modalOpen.value;
+    const showModal = () => {
+      visible.value = true;
     };
+
+    const handleOk = (e) => {
+      console.log(e);
+      visible.value = false;
+    };
+
     return {
-      selectedKeys: ref(["2"]),
-      modalOpen,
-      showModalCard,
+      visible,
+      handleOk,
+      showModal,
     };
   },
 });
