@@ -1,159 +1,149 @@
 <template>
   <container-wrapper>
-    <section class="bg-gray-50">
-      <div
-        class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
+    <a-card title="Поменяйте пароль" :bordered="false">
+      <a-form
+        ref="formRef"
+        name="custom-validation"
+        :model="formState"
+        :rules="rules"
+        v-bind="layout"
+        @finish="handleFinish"
+        @validate="handleValidate"
+        @finishFailed="handleFinishFailed"
       >
-        <div
-          class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0"
-        >
-          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h2
-              class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl"
-            >
-              Поменять пароль
-            </h2>
-            <form @submit.prevent="changePass" class="space-y-4 md:space-y-6">
-              <div>
-                <label
-                  for="email"
-                  class="block mb-2 text-sm font-medium text-gray-900"
-                  >Email</label
-                >
-                <input
-                  v-model="email"
-                  type="email"
-                  name="email"
-                  id="email"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  placeholder="name@company.com"
-                  required=""
-                />
-              </div>
-              <div>
-                <label
-                  for="password"
-                  class="block mb-2 text-sm font-medium text-gray-900"
-                  >Новый пароль</label
-                >
-                <input
-                  v-model="password"
-                  type="password"
-                  name="password"
-                  id="password"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  required=""
-                />
-              </div>
-              <div>
-                <label
-                  for="confirmPassword"
-                  class="block mb-2 text-sm font-medium text-gray-900"
-                  >Подтвердите новый пароль</label
-                >
+        <a-form-item label="Email" name="email">
+          <a-input v-model:value="formState.email"> </a-input>
+        </a-form-item>
 
-                <input
-                  v-if="!this.password || !this.confirmPassword"
-                  v-model="confirmPassword"
-                  type="confirm-password"
-                  name="confirm-password"
-                  id="confirm-password"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  required=""
-                />
+        <a-form-item has-feedback label="Пароль" name="pass">
+          <a-input
+            v-model:value="formState.pass"
+            type="password"
+            autocomplete="off"
+          >
+          </a-input>
+        </a-form-item>
 
-                <div v-else-if="this.password !== this.confirmPassword">
-                  <input
-                    v-model="confirmPassword"
-                    type="confirmPassword"
-                    name="confirmPassword"
-                    id="confirmPassword"
-                    class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
-                    required=""
-                  />
+        <a-form-item has-feedback label="Повторите пароль" name="checkPass">
+          <a-input
+            v-model:value="formState.checkPass"
+            type="password"
+            autocomplete="off"
+          />
+        </a-form-item>
 
-                  <span class="text-red-900">Пароли не совпадают</span>
-                </div>
-
-                <input
-                  v-else
-                  v-model="confirmPassword"
-                  type="confirmPassword"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
-                  required=""
-                />
-              </div>
-              <div class="flex items-start">
-                <div class="flex items-center h-5">
-                  <input
-                    id="newsletter"
-                    aria-describedby="newsletter"
-                    type="checkbox"
-                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
-                    required=""
-                  />
-                </div>
-                <div class="ml-3 text-sm">
-                  <label for="newsletter" class="font-light text-gray-500"
-                    >Я согласен с
-                    <a
-                      class="font-medium text-primary-600 hover:underline"
-                      href="#"
-                      >Политикой конфиденциальности</a
-                    ></label
-                  >
-                </div>
-              </div>
-
-              <button
-                v-if="
-                  this.password !== this.confirmPassword ||
-                  !this.password ||
-                  !this.email
-                "
-                type="submit"
-                class="w-full text-white bg-gray-400 dark:bg-primary-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                disabled
-              >
-                Обновить пароль
-              </button>
-
-              <button
-                v-else
-                type="submit"
-                class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-              >
-                Обновить пароль
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+        <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
+          <a-button type="primary" html-type="submit">Поменять пароль</a-button>
+          <a-button style="margin-left: 10px" @click="resetForm"
+            >Очистить форму</a-button
+          >
+        </a-form-item>
+      </a-form>
+    </a-card>
   </container-wrapper>
 </template>
 
 <script>
 import ContainerWrapper from "@/components/Container-wrapper.vue";
-import { defineComponent } from "@vue/runtime-core";
+import { defineComponent, reactive, ref } from "vue";
 
 export default defineComponent({
   components: { ContainerWrapper },
 
-  data() {
-    return {
+  setup() {
+    const formRef = ref();
+    const formState = reactive({
       email: "",
-      password: "",
-      confirmPassword: "",
-    };
-  },
+      pass: "",
+      checkPass: "",
+    });
 
-  methods: {
-    changePass() {
-      alert("Пароль успешно заменён");
-    },
+    let validatePass = async (_rule, value) => {
+      if (value === "") {
+        return Promise.reject("Please input the password");
+      } else {
+        if (formState.checkPass !== "") {
+          formRef.value.validateFields("checkPass");
+        }
+
+        return Promise.resolve();
+      }
+    };
+
+    let validatePass2 = async (_rule, value) => {
+      if (value === "") {
+        return Promise.reject("Please input the password again");
+      } else if (value !== formState.pass) {
+        return Promise.reject("Two inputs don't match!");
+      } else {
+        return Promise.resolve();
+      }
+    };
+
+    let validatePass3 = async (_rule, value) => {
+      if (value === "") {
+        return Promise.reject("Please input the email");
+      }
+      return Promise.resolve();
+    };
+
+    const rules = {
+      email: [
+        {
+          required: true,
+          validator: validatePass3,
+          trigger: "change",
+        },
+      ],
+      pass: [
+        {
+          required: true,
+          validator: validatePass,
+          trigger: "change",
+        },
+      ],
+      checkPass: [
+        {
+          validator: validatePass2,
+          trigger: "change",
+        },
+      ],
+    };
+    const layout = {
+      labelCol: {
+        span: 4,
+      },
+      wrapperCol: {
+        span: 14,
+      },
+    };
+
+    const handleFinish = (values) => {
+      console.log(values, formState);
+    };
+
+    const handleFinishFailed = (errors) => {
+      console.log(errors);
+    };
+
+    const resetForm = () => {
+      formRef.value.resetFields();
+    };
+
+    const handleValidate = (...args) => {
+      console.log(args);
+    };
+
+    return {
+      formState,
+      formRef,
+      rules,
+      layout,
+      handleFinishFailed,
+      handleFinish,
+      resetForm,
+      handleValidate,
+    };
   },
 });
 </script>
