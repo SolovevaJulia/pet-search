@@ -1,12 +1,11 @@
 <template>
-  <container-wrapper>
-    <a-card title="Поменяйте пароль" :bordered="false">
+  <div class="changepass-page-wrapper">
+    <a-card title="Поменяйте пароль" :bordered="false" class="changepass-form">
       <a-form
         ref="formRef"
         name="custom-validation"
         :model="formState"
         :rules="rules"
-        v-bind="layout"
         @finish="handleFinish"
         @validate="handleValidate"
         @finishFailed="handleFinishFailed"
@@ -32,24 +31,18 @@
           />
         </a-form-item>
 
-        <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
+        <a-form-item :wrapper-col="{ span: 24 }">
           <a-button type="primary" html-type="submit">Поменять пароль</a-button>
-          <a-button style="margin-left: 10px" @click="resetForm"
-            >Очистить форму</a-button
-          >
         </a-form-item>
       </a-form>
     </a-card>
-  </container-wrapper>
+  </div>
 </template>
 
 <script>
-import ContainerWrapper from "@/components/Container-wrapper.vue";
 import { defineComponent, reactive, ref } from "vue";
 
 export default defineComponent({
-  components: { ContainerWrapper },
-
   setup() {
     const formRef = ref();
     const formState = reactive({
@@ -147,3 +140,28 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+.changepass-page-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 128px);
+  height: 100%;
+}
+
+.changepass-form {
+  width: 448px;
+  background-color: #ffffff;
+  padding: 16px 24px;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+@media screen and (max-width: 448px), screen and (max-height: 450px) {
+  .changepass-form {
+    width: 100%;
+    box-shadow: none;
+  }
+}
+</style>

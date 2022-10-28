@@ -1,8 +1,40 @@
 <template>
-  <router-view />
+  <a-layout>
+    <nav-bar></nav-bar>
+    <router-view />
+  </a-layout>
 </template>
 
-<style lang="scss">
+<script>
+import { defineComponent } from "vue";
+import NavBar from "@/components/Nav-bar.vue";
+
+export default defineComponent({
+  components: { NavBar },
+  setup() {},
+});
+</script>
+
+<style>
+body {
+  background-color: rgba(243, 244, 246, 1) !important;
+}
+
+svg {
+  vertical-align: baseline;
+}
+
+img {
+  display: inline-block;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -10,16 +42,17 @@
   background-color: rgb(249 250 251);
 }
 
-nav {
-  padding: 30px;
+.app-content {
+  width: 100%;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.ant-table-wrapper .ant-pagination.ant-table-pagination {
+  padding: 0 16px;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+#app .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  align-items: center;
 }
 </style>

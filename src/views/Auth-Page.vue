@@ -1,7 +1,8 @@
 <template>
-  <container-wrapper>
-    <a-card title="Войдите в ваш аккаунт" :bordered="false">
+  <div class="auth-page-wrapper">
+    <a-card title="Войдите в ваш аккаунт" :bordered="false" class="auth-form">
       <a-form
+        horizontal
         :model="formState"
         name="normal_login"
         class="login-form"
@@ -25,7 +26,9 @@
         <a-form-item
           label="Пароль"
           name="password"
-          :rules="[{ required: true, message: 'Please input your password!' }]"
+          :rules="[
+            { required: true, message: 'Пожалуйста, введите ваш пароль!' },
+          ]"
         >
           <a-input-password v-model:value="formState.password">
             <template #prefix>
@@ -59,16 +62,13 @@
         </a-form-item>
       </a-form>
     </a-card>
-  </container-wrapper>
+  </div>
 </template>
 
 <script>
-import ContainerWrapper from "@/components/Container-wrapper.vue";
 import { defineComponent, reactive, computed } from "@vue/runtime-core";
 
 export default defineComponent({
-  components: { ContainerWrapper },
-
   data() {
     return {
       email: "",
@@ -120,5 +120,28 @@ export default defineComponent({
 }
 #components-form-demo-normal-login .login-form-button {
   width: 100%;
+}
+
+.auth-page-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 128px);
+  height: 100%;
+}
+
+.auth-form {
+  width: 448px;
+  background-color: #ffffff;
+  padding: 16px 24px;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+@media screen and (max-width: 448px), screen and (max-height: 450px) {
+  .auth-form {
+    width: 100%;
+    box-shadow: none;
+  }
 }
 </style>

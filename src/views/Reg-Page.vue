@@ -1,12 +1,12 @@
 <template>
-  <container-wrapper>
-    <a-card title="Создайте аккаунт" :bordered="false">
+  <div class="reg-page-wrapper">
+    <a-card title="Создайте аккаунт" :bordered="false" class="reg-form">
       <a-form
+        horizontal
         ref="formRef"
         name="custom-validation"
         :model="formState"
         :rules="rules"
-        v-bind="layout"
         @finish="handleFinish"
         @validate="handleValidate"
         @finishFailed="handleFinishFailed"
@@ -32,26 +32,20 @@
           />
         </a-form-item>
 
-        <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
+        <a-form-item :wrapper-col="{ span: 24 }">
           <a-button type="primary" html-type="submit"
             >Зарегистрироваться</a-button
-          >
-          <a-button style="margin-left: 10px" @click="resetForm"
-            >Очистить форму</a-button
           >
         </a-form-item>
       </a-form>
     </a-card>
-  </container-wrapper>
+  </div>
 </template>
 
 <script>
-import ContainerWrapper from "@/components/Container-wrapper.vue";
 import { defineComponent, reactive, ref } from "vue";
 
 export default defineComponent({
-  components: { ContainerWrapper },
-
   setup() {
     const formRef = ref();
     const formState = reactive({
@@ -62,7 +56,7 @@ export default defineComponent({
 
     let validatePass = async (_rule, value) => {
       if (value === "") {
-        return Promise.reject("Please input the password");
+        return Promise.reject("Пожалуйста, введите ваш пароль");
       } else {
         if (formState.checkPass !== "") {
           formRef.value.validateFields("checkPass");
@@ -74,9 +68,9 @@ export default defineComponent({
 
     let validatePass2 = async (_rule, value) => {
       if (value === "") {
-        return Promise.reject("Please input the password again");
+        return Promise.reject("Пожалуйста, введите ваш пароль еще раз");
       } else if (value !== formState.pass) {
-        return Promise.reject("Two inputs don't match!");
+        return Promise.reject("Пароли не совпадают!");
       } else {
         return Promise.resolve();
       }
@@ -84,7 +78,7 @@ export default defineComponent({
 
     let validatePass3 = async (_rule, value) => {
       if (value === "") {
-        return Promise.reject("Please input the email");
+        return Promise.reject("Пожалуйста, введите email");
       }
       return Promise.resolve();
     };
@@ -149,3 +143,28 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+.reg-page-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 128px);
+  height: 100%;
+}
+
+.reg-form {
+  width: 448px;
+  background-color: #ffffff;
+  padding: 16px 24px;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+@media screen and (max-width: 448px), screen and (max-height: 450px) {
+  .reg-form {
+    width: 100%;
+    box-shadow: none;
+  }
+}
+</style>
