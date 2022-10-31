@@ -4,6 +4,7 @@ import AuthPage from "../views/Auth-Page.vue";
 import RegPage from "../views/Reg-Page.vue";
 import ChangePass from "../views/Change-Pass.vue";
 import CardComponent from "@/components/Card-component.vue";
+import DashBoard from "@/views/DashBoard.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/card",
     name: "card",
     component: CardComponent,
+  },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: DashBoard,
   },
 ];
 const router = createRouter({

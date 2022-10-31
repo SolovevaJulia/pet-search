@@ -12,6 +12,17 @@
         <a-button>Войти</a-button>
       </router-link>
       <a-button @click="showModal" type="primary">Оставить объявление</a-button>
+      <span>
+        <a-badge dot>
+          <router-link to="/dashboard">
+            <a-button>
+              <template #icon>
+                <UserOutlined />
+              </template>
+            </a-button>
+          </router-link>
+        </a-badge>
+      </span>
     </a-space>
   </a-layout-header>
 
@@ -95,7 +106,7 @@
 
 <script>
 import { defineComponent, ref, reactive } from "vue";
-import { InboxOutlined } from "@ant-design/icons-vue";
+import { InboxOutlined, UserOutlined } from "@ant-design/icons-vue";
 // import { message } from "ant-design-vue";
 import dayjs from "dayjs";
 import "dayjs/locale/ru";
@@ -105,6 +116,7 @@ export default defineComponent({
   name: "NavBar",
   components: {
     InboxOutlined,
+    UserOutlined,
   },
   setup() {
     const visible = ref(false);
@@ -194,5 +206,10 @@ export default defineComponent({
 
 .ant-layout-header .ant-page-header-heading-left {
   margin: 0;
+}
+
+#components-avatar-demo-badge .ant-avatar {
+  margin-top: 0;
+  margin-right: 0;
 }
 </style>
