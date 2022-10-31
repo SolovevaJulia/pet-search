@@ -3,6 +3,7 @@ import FeedsPage from "../views/Feeds-Page.vue";
 import AuthPage from "../views/Auth-Page.vue";
 import RegPage from "../views/Reg-Page.vue";
 import ChangePass from "../views/Change-Pass.vue";
+import CardComponent from "@/components/Card-component.vue";
 
 const routes = [
   {
@@ -25,8 +26,12 @@ const routes = [
     name: "changePass",
     component: ChangePass,
   },
+  {
+    path: "/card",
+    name: "card",
+    component: CardComponent,
+  },
 ];
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
