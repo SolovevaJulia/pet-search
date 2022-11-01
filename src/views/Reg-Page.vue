@@ -36,6 +36,8 @@
           <a-button type="primary" html-type="submit"
             >Зарегистрироваться</a-button
           >
+          Уже есть аккаунт?
+          <router-link to="/auth">Войти</router-link>
         </a-form-item>
       </a-form>
     </a-card>

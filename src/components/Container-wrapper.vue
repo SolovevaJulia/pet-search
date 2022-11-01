@@ -1,6 +1,12 @@
 <template>
-  <a-layout-content :style="{ padding: '50px', marginTop: '64px' }">
-    <div :style="{ background: '#fff', padding: '24px', minHeight: '380px' }">
+  <a-layout-content class="container-wrapper">
+    <div
+      :style="{
+        background: '#fff',
+        padding: '24px',
+        height: '100vh',
+      }"
+    >
       <slot></slot>
     </div>
   </a-layout-content>
@@ -15,6 +21,16 @@ export default defineComponent({
 </script>
 
 <style>
+.container-wrapper {
+  padding: 50px;
+  margin-top: 64px;
+}
+@media (max-width: 576px) {
+  .container-wrapper {
+    padding: 0;
+  }
+}
+
 .container-wrapper-content {
   padding: 1.5rem;
 }

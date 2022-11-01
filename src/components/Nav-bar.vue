@@ -5,13 +5,20 @@
     :style="{ position: 'fixed', zIndex: 1, width: '100%' }"
   >
     <div class="logo">
-      <!-- <p>Потерянные животные</p> -->
+      <p style="margin-bottom: 0">Потеряшки</p>
     </div>
     <a-space>
       <router-link to="/auth">
         <a-button>Войти</a-button>
       </router-link>
-      <a-button @click="showModal" type="primary">Оставить объявление</a-button>
+      <a-button class="ad-button" @click="showModal" type="primary"
+        >Оставить объявление</a-button
+      >
+      <a-button class="ad-button-mobile" @click="showModal">
+        <template #icon>
+          <PlusOutlined />
+        </template>
+      </a-button>
       <span>
         <a-badge dot>
           <router-link to="/dashboard">
@@ -26,156 +33,37 @@
     </a-space>
   </a-layout-header>
 
-  <a-modal
-    class="ad-modal"
-    v-model:visible="visible"
-    title="Объявление"
-    @ok="handleOk"
-  >
-    <a-form :model="formState" horizontal>
-      <a-row>
-        <a-col :span="24">
-          <a-form-item label="Выберите тип объявления">
-            <a-select
-              ref="select"
-              v-model:value="value1"
-              @change="handleChange"
-            >
-              <a-select-option value="jack">Потерян</a-select-option>
-              <a-select-option value="lucy">Найден</a-select-option>
-            </a-select>
-          </a-form-item>
-        </a-col>
-
-        <a-col :span="24">
-          <a-form-item label="Выберите теги">
-            <a-select
-              :options="tags"
-              mode="multiple"
-              :style="{ width: '100%' }"
-              v-model:value="value"
-              @change="handleChange"
-            >
-            </a-select>
-          </a-form-item>
-        </a-col>
-
-        <a-col :span="24">
-          <a-form-item label="Дата потери/когда был найден">
-            <a-date-picker :style="{ width: '100%' }"> </a-date-picker>
-          </a-form-item>
-        </a-col>
-
-        <a-col :span="24">
-          <a-form-item>
-            <a-upload-dragger
-              v-model:fileList="fileList"
-              name="file"
-              :multiple="true"
-              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-              @change="handleChange"
-              @drop="handleDrop"
-            >
-              <p class="ant-upload-drag-icon">
-                <inbox-outlined></inbox-outlined>
-              </p>
-              <p class="ant-upload-text">
-                Щелкните или перетащите сюда изображение
-              </p>
-              <!-- <p class="ant-upload-hint">
-                Support for a single or bulk upload. Strictly prohibit from
-                uploading company data or other band files
-              </p> -->
-            </a-upload-dragger>
-          </a-form-item>
-        </a-col>
-
-        <a-col :span="24">
-          <a-form-item> TO DO MAP </a-form-item>
-        </a-col>
-
-        <a-col :span="24">
-          <a-form-item label="Номер телефона">
-            <a-input type="tel" />
-          </a-form-item>
-        </a-col>
-      </a-row>
-    </a-form>
-  </a-modal>
+  <ad-modal
+    @close-ad-modal="closeAdModal"
+    :visible="isAdModalVisible"
+  ></ad-modal>
 </template>
 
 <script>
-import { defineComponent, ref, reactive } from "vue";
-import { InboxOutlined, UserOutlined } from "@ant-design/icons-vue";
-// import { message } from "ant-design-vue";
-import dayjs from "dayjs";
-import "dayjs/locale/ru";
-import locale from "ant-design-vue/es/date-picker/locale/zh_CN";
+import { defineComponent, ref } from "vue";
+import { UserOutlined, PlusOutlined } from "@ant-design/icons-vue";
+import AdModal from "@/components/Modals/AdModal.vue";
 
 export default defineComponent({
   name: "NavBar",
   components: {
-    InboxOutlined,
     UserOutlined,
+    PlusOutlined,
+    AdModal,
   },
   setup() {
-    const visible = ref(false);
+    const isAdModalVisible = ref(false);
 
     const showModal = () => {
-      visible.value = true;
+      isAdModalVisible.value = true;
     };
 
-    const handleOk = (e) => {
-      console.log(e);
-      visible.value = false;
-    };
-
-    const formState = reactive({
-      name: "",
-      delivery: false,
-      type: [],
-      resource: "",
-      desc: "",
-    });
-
-    // const handleChange = (info) => {
-    //   const status = info.file.status;
-
-    //   if (status !== "uploading") {
-    //     console.log(info.file, info.fileList);
-    //   }
-
-    //   if (status === "done") {
-    //     message.success(`${info.file.name} file uploaded successfully.`);
-    //   } else if (status === "error") {
-    //     message.error(`${info.file.name} file upload failed.`);
-    //   }
-    // };
-
-    const tags = [
-      {
-        value: "кот",
-        label: "кот",
-      },
-      {
-        value: "собака",
-        label: "собака",
-      },
-    ];
+    const closeAdModal = () => (isAdModalVisible.value = false);
 
     return {
-      visible,
-      handleOk,
+      isAdModalVisible,
       showModal,
-      formState,
-      // handleChange,
-      fileList: ref([]),
-      handleDrop: (e) => {
-        console.log(e);
-      },
-      dayjs,
-      locale,
-      tags,
+      closeAdModal,
     };
   },
 });
@@ -194,6 +82,11 @@ export default defineComponent({
   color: black;
   font-size: 24px;
 }
+@media (max-width: 768px) {
+  .logo {
+    font-size: 18px;
+  }
+}
 
 .site-layout .site-layout-background {
   background: #fff;
@@ -202,6 +95,26 @@ export default defineComponent({
 .layout {
   display: flex;
   justify-content: space-between;
+}
+
+@media (max-width: 576px) {
+  .layout {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+.ad-button-mobile {
+  display: none !important;
+}
+
+@media (max-width: 576px) {
+  .ad-button {
+    display: none !important;
+  }
+  .ad-button-mobile {
+    display: block !important;
+  }
 }
 
 .ant-layout-header .ant-page-header-heading-left {

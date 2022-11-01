@@ -1,10 +1,12 @@
 <template>
   <container-wrapper>
-    <a-typography-title :level="3">Мои объявления</a-typography-title>
-    <div style="display: flex">
-      <a-list :style="{ width: '25%' }" :split="false">
+    <a-typography-title :level="3">Мой профиль</a-typography-title>
+    <div class="dashboard-wrapper" style="display: flex">
+      <a-list class="btns-wrapper" :split="false">
         <a-list-item
-          ><a-button type="text">Добавить объявление</a-button></a-list-item
+          ><a-button @click="showModal" type="text"
+            >Добавить объявление</a-button
+          ></a-list-item
         >
         <a-list-item
           ><a-button type="text">Избранные объявления</a-button></a-list-item
@@ -12,11 +14,11 @@
         <a-list-item><a-button type="text">Настройки</a-button></a-list-item>
       </a-list>
       <a-list
+        class="ads-wrapper"
         item-layout="vertical"
         size="small"
         :pagination="pagination"
         :data-source="listData"
-        :style="{ width: '75%' }"
       >
         <template #renderItem="{ item }">
           <a-list-item key="item.title">
@@ -47,11 +49,17 @@
       </a-list>
     </div>
   </container-wrapper>
+
+  <ad-modal
+    @close-ad-modal="closeAdModal"
+    :visible="isAdModalVisible"
+  ></ad-modal>
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import ContainerWrapper from "@/components/Container-wrapper.vue";
+import AdModal from "@/components/Modals/AdModal.vue";
 import {
   StarOutlined,
   LikeOutlined,
@@ -77,8 +85,17 @@ export default defineComponent({
     StarOutlined,
     LikeOutlined,
     MessageOutlined,
+    AdModal,
   },
   setup() {
+    const isAdModalVisible = ref(false);
+
+    const showModal = () => {
+      isAdModalVisible.value = true;
+    };
+
+    const closeAdModal = () => (isAdModalVisible.value = false);
+
     const pagination = {
       onChange: (page) => {
         console.log(page);
@@ -103,6 +120,9 @@ export default defineComponent({
       listData,
       pagination,
       actions,
+      showModal,
+      isAdModalVisible,
+      closeAdModal,
     };
   },
 });
@@ -111,5 +131,33 @@ export default defineComponent({
 <style>
 .ant-list-item-main {
   text-align: left;
+}
+.ads-wrapper {
+  width: 75%;
+}
+
+.btns-wrapper {
+  width: 25%;
+}
+
+@media (max-width: 992px) {
+  .dashboard-wrapper {
+    flex-direction: column;
+  }
+  .ads-wrapper {
+    width: 100%;
+  }
+  .ant-spin-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ant-spin-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>
