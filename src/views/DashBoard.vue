@@ -58,7 +58,7 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import ContainerWrapper from "@/components/Container-wrapper.vue";
+import ContainerWrapper from "@/components/ContainerWrapper.vue";
 import AdModal from "@/components/Modals/AdModal.vue";
 import {
   StarOutlined,

@@ -1,36 +1,36 @@
 import { createRouter, createWebHistory } from "vue-router";
-import FeedsPage from "../views/Feeds-Page.vue";
-import AuthPage from "../views/Auth-Page.vue";
-import RegPage from "../views/Reg-Page.vue";
-import ChangePass from "../views/Change-Pass.vue";
-import CardComponent from "@/components/Card-component.vue";
+import NewsFeed from "../views/NewsFeed.vue";
+import AuthentificationForm from "../views/AuthentificationForm.vue";
+import RegistrationForm from "../views/RegistrationForm.vue";
+import ChangePasswordForm from "../views/ChangePasswordForm.vue";
+import AdCard from "@/components/AdCard.vue";
 import DashBoard from "@/views/DashBoard.vue";
 
 const routes = [
   {
     path: "/",
     name: "home",
-    component: FeedsPage,
+    component: NewsFeed,
   },
   {
     path: "/auth",
     name: "auth",
-    component: AuthPage,
+    component: AuthentificationForm,
   },
   {
     path: "/reg",
     name: "reg",
-    component: RegPage,
+    component: RegistrationForm,
   },
   {
     path: "/change-password",
-    name: "changePass",
-    component: ChangePass,
+    name: "ChangePasswordForm",
+    component: ChangePasswordForm,
   },
   {
     path: "/card",
     name: "card",
-    component: CardComponent,
+    component: AdCard,
   },
   {
     path: "/dashboard",

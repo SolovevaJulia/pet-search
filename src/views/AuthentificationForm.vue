@@ -1,9 +1,9 @@
 <template>
-  <div class="auth-page-wrapper">
+  <div class="authentification-form-wrapper">
     <a-card title="Войдите в ваш аккаунт" :bordered="false" class="auth-form">
       <a-form
         horizontal
-        :model="formState"
+        :model="form"
         name="normal_login"
         class="login-form"
         @finish="onFinish"
@@ -16,7 +16,7 @@
             { required: true, message: 'Пожалуйста, введите ваш email!' },
           ]"
         >
-          <a-input v-model:value="formState.email">
+          <a-input v-model:value="email">
             <template #prefix>
               <UserOutlined class="site-form-item-icon" />
             </template>
@@ -30,7 +30,7 @@
             { required: true, message: 'Пожалуйста, введите ваш пароль!' },
           ]"
         >
-          <a-input-password v-model:value="formState.password">
+          <a-input-password v-model:value="form.password">
             <template #prefix>
               <LockOutlined class="site-form-item-icon" />
             </template>
@@ -39,7 +39,7 @@
 
         <a-form-item>
           <a-form-item name="remember" no-style>
-            <a-checkbox v-model:checked="formState.remember"
+            <a-checkbox v-model:checked="form.remember"
               >Запомнить меня</a-checkbox
             >
           </a-form-item>
@@ -66,13 +66,14 @@
 </template>
 
 <script>
-import { defineComponent, reactive, computed } from "@vue/runtime-core";
-
-export default defineComponent({
+export default {
   data() {
     return {
-      email: "",
-      password: "",
+      form: {
+        email: "",
+        password: "",
+        remember: true,
+      },
     };
   },
 
@@ -80,35 +81,47 @@ export default defineComponent({
     auth() {
       alert("Ok");
     },
+    onFinish(values) {
+      console.log("Success:", values);
+    },
+    onFinishFailed(errorInfo) {
+      console.log("Failed:", errorInfo);
+    },
+  },
+
+  watch: {
+    form: {
+      handler(aaa) {
+        console.log(aaa);
+      },
+      deep: true,
+    },
+    // email(nnn) {
+    //   console.log(nnn);
+    // },
+  },
+
+  computed: {
+    disabled() {
+      return !(this.form.email && this.form.password);
+    },
   },
 
   setup() {
-    const formState = reactive({
-      email: "",
-      password: "",
-      remember: true,
-    });
+    // const onFinish = (values) => {
+    //   console.log("Success:", values);
+    // };
 
-    const onFinish = (values) => {
-      console.log("Success:", values);
-    };
-
-    const onFinishFailed = (errorInfo) => {
-      console.log("Failed:", errorInfo);
-    };
-
-    const disabled = computed(() => {
-      return !(formState.email && formState.password);
-    });
+    // const onFinishFailed = (errorInfo) => {
+    //   console.log("Failed:", errorInfo);
+    // };
 
     return {
-      formState,
-      onFinish,
-      onFinishFailed,
-      disabled,
+      // onFinish,
+      // onFinishFailed,
     };
   },
-});
+};
 </script>
 
 <style>
@@ -122,7 +135,7 @@ export default defineComponent({
   width: 100%;
 }
 
-.auth-page-wrapper {
+.authentification-form-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,6 +1,10 @@
 <template>
-  <div class="reg-page-wrapper">
-    <a-card title="Создайте аккаунт" :bordered="false" class="reg-form">
+  <div class="registration-form-wrapper">
+    <a-card
+      title="Создайте аккаунт"
+      :bordered="false"
+      class="registration-form"
+    >
       <a-form
         horizontal
         ref="formRef"
@@ -147,7 +151,7 @@ export default defineComponent({
 </script>
 
 <style>
-.reg-page-wrapper {
+.registration-form-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,7 +159,7 @@ export default defineComponent({
   height: 100%;
 }
 
-.reg-form {
+.registration-form {
   width: 448px;
   background-color: #ffffff;
   padding: 16px 24px;
@@ -164,7 +168,7 @@ export default defineComponent({
 }
 
 @media screen and (max-width: 448px), screen and (max-height: 450px) {
-  .reg-form {
+  .registration-form {
     width: 100%;
     box-shadow: none;
   }

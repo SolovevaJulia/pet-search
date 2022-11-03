@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import ContainerWrapper from "@/components/Container-wrapper.vue";
+import ContainerWrapper from "@/components/ContainerWrapper.vue";
 import { defineComponent, ref } from "@vue/runtime-core";
 import {
   SettingOutlined,

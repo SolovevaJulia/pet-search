@@ -1,6 +1,10 @@
 <template>
-  <div class="changepass-page-wrapper">
-    <a-card title="Поменяйте пароль" :bordered="false" class="changepass-form">
+  <div class="change-password-form-wrapper">
+    <a-card
+      title="Поменяйте пароль"
+      :bordered="false"
+      class="change-password-form"
+    >
       <a-form
         ref="formRef"
         name="custom-validation"
@@ -142,7 +146,7 @@ export default defineComponent({
 </script>
 
 <style>
-.changepass-page-wrapper {
+.change-password-form-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,7 +154,7 @@ export default defineComponent({
   height: 100%;
 }
 
-.changepass-form {
+.change-password-form {
   width: 448px;
   background-color: #ffffff;
   padding: 16px 24px;
@@ -159,7 +163,7 @@ export default defineComponent({
 }
 
 @media screen and (max-width: 448px), screen and (max-height: 450px) {
-  .changepass-form {
+  .change-password-form {
     width: 100%;
     box-shadow: none;
   }

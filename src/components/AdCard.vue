@@ -65,13 +65,13 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import ContainerWrapper from "@/components/Container-wrapper.vue";
+import ContainerWrapper from "@/components/ContainerWrapper.vue";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 export default defineComponent({
-  name: "CardComponent",
+  name: "AdCard",
   components: { ContainerWrapper },
   setup() {
     const comments = ref([]);
