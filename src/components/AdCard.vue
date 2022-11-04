@@ -50,7 +50,7 @@
                   html-type="submit"
                   :loading="submitting"
                   type="primary"
-                  @click="handleSubmit"
+                  @click="addComent"
                 >
                   Add Comment
                 </a-button>
@@ -64,48 +64,46 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
 import ContainerWrapper from "@/components/ContainerWrapper.vue";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
-export default defineComponent({
+export default {
   name: "AdCard",
   components: { ContainerWrapper },
-  setup() {
-    const comments = ref([]);
-    const submitting = ref(false);
-    const value = ref("");
 
-    const handleSubmit = () => {
-      if (!value.value) {
+  data() {
+    return {
+      comments: [],
+      submitting: false,
+      value: "",
+    };
+  },
+
+  methods: {
+    addComent() {
+      if (!this.value) {
         return;
       }
 
-      submitting.value = true;
+      this.submitting = true;
       setTimeout(() => {
-        submitting.value = false;
-        comments.value = [
+        this.submitting = false;
+        this.comments = [
           {
             author: "Han Solo",
             avatar: "https://joeschmoe.io/api/v1/random",
-            content: value.value,
+            content: this.value,
             datetime: dayjs().fromNow(),
           },
-          ...comments.value,
+          ...this.comments,
         ];
-        value.value = "";
+        this.value = "";
       }, 1000);
-    };
-    return {
-      comments,
-      submitting,
-      value,
-      handleSubmit,
-    };
+    },
   },
-});
+};
 </script>
 
 <style>

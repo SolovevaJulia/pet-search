@@ -17,8 +17,8 @@
         class="ads-wrapper"
         item-layout="vertical"
         size="small"
-        :pagination="pagination"
         :data-source="listData"
+        :pagination="pagination"
       >
         <template #renderItem="{ item }">
           <a-list-item key="item.title">
@@ -57,7 +57,6 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
 import ContainerWrapper from "@/components/ContainerWrapper.vue";
 import AdModal from "@/components/Modals/AdModal.vue";
 import {
@@ -65,6 +64,7 @@ import {
   LikeOutlined,
   MessageOutlined,
 } from "@ant-design/icons-vue";
+
 const listData = [];
 for (let i = 0; i < 10; i++) {
   listData.push({
@@ -78,7 +78,7 @@ for (let i = 0; i < 10; i++) {
   });
 }
 
-export default defineComponent({
+export default {
   name: "DashBoard",
   components: {
     ContainerWrapper,
@@ -87,45 +87,48 @@ export default defineComponent({
     MessageOutlined,
     AdModal,
   },
-  setup() {
-    const isAdModalVisible = ref(false);
 
-    const showModal = () => {
-      isAdModalVisible.value = true;
-    };
-
-    const closeAdModal = () => (isAdModalVisible.value = false);
-
-    const pagination = {
-      onChange: (page) => {
-        console.log(page);
-      },
-      pageSize: 3,
-    };
-    const actions = [
-      {
-        type: "StarOutlined",
-        text: "156",
-      },
-      {
-        type: "LikeOutlined",
-        text: "156",
-      },
-      {
-        type: "MessageOutlined",
-        text: "2",
-      },
-    ];
+  data() {
     return {
+      isAdModalVisible: false,
+      actions: [
+        {
+          type: "StarOutlined",
+          text: "156",
+        },
+        {
+          type: "LikeOutlined",
+          text: "156",
+        },
+        {
+          type: "MessageOutlined",
+          text: "2",
+        },
+      ],
       listData,
-      pagination,
-      actions,
-      showModal,
-      isAdModalVisible,
-      closeAdModal,
+      pagination: {
+        onChange: (page) => {
+          console.log(page);
+        },
+        pageSize: 3,
+      },
     };
   },
-});
+
+  methods: {
+    showModal() {
+      this.isAdModalVisible = true;
+    },
+    closeAdModal() {
+      this.isAdModalVisible = false;
+    },
+    onPageChange(page) {
+      console.log(page);
+    },
+  },
+
+  computed: {},
+};
 </script>
 
 <style>

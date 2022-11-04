@@ -56,7 +56,7 @@
 
 <script>
 import ContainerWrapper from "@/components/ContainerWrapper.vue";
-import { defineComponent, ref } from "@vue/runtime-core";
+import { defineComponent } from "@vue/runtime-core";
 import {
   SettingOutlined,
   EditOutlined,
@@ -70,18 +70,18 @@ export default defineComponent({
     EditOutlined,
     EllipsisOutlined,
   },
-  setup() {
-    const value = ref("");
 
-    const onSearch = (searchValue) => {
-      console.log("use value", searchValue);
-      console.log("or use this.value", value.value);
-    };
-
+  data() {
     return {
-      value,
-      onSearch,
+      value: "",
     };
+  },
+
+  methods: {
+    onSearch(searchValue) {
+      console.log("use value", searchValue);
+      console.log("or use this.value", this.value);
+    },
   },
 });
 </script>

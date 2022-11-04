@@ -5,38 +5,57 @@
       :bordered="false"
       class="change-password-form"
     >
-      <a-form
-        ref="formRef"
-        name="custom-validation"
-        :model="formState"
-        :rules="rules"
-        @finish="handleFinish"
-        @validate="handleValidate"
-        @finishFailed="handleFinishFailed"
-      >
-        <a-form-item label="Email" name="email">
-          <a-input v-model:value="formState.email"> </a-input>
-        </a-form-item>
-
-        <a-form-item has-feedback label="Пароль" name="pass">
-          <a-input
-            v-model:value="formState.pass"
-            type="password"
-            autocomplete="off"
-          >
+      <a-form :model="form" @finish="onFinish" @finishFailed="onFinishFailed">
+        <a-form-item
+          label="E-mail"
+          name="email"
+          :rules="[
+            { required: true, message: 'Пожалуйста, введите ваш e-mail!' },
+          ]"
+        >
+          <a-input v-model:value="form.email">
+            <template #prefix>
+              <UserOutlined class="site-form-item-icon" />
+            </template>
           </a-input>
         </a-form-item>
 
-        <a-form-item has-feedback label="Повторите пароль" name="checkPass">
-          <a-input
-            v-model:value="formState.checkPass"
-            type="password"
-            autocomplete="off"
-          />
+        <a-form-item
+          label="Пароль"
+          name="password"
+          :rules="[
+            { required: true, message: 'Пожалуйста, введите ваш пароль!' },
+          ]"
+        >
+          <a-input-password v-model:value="form.password">
+            <template #prefix>
+              <LockOutlined class="site-form-item-icon" />
+            </template>
+          </a-input-password>
+        </a-form-item>
+
+        <a-form-item
+          label="Повторите пароль"
+          name="checkPassword"
+          :rules="[
+            { required: true, message: 'Пожалуйста, повторите ваш пароль!' },
+          ]"
+        >
+          <a-input-password v-model:value="form.checkPassword">
+            <template #prefix>
+              <UserOutlined class="site-form-item-icon" />
+            </template>
+          </a-input-password>
         </a-form-item>
 
         <a-form-item :wrapper-col="{ span: 24 }">
-          <a-button type="primary" html-type="submit">Поменять пароль</a-button>
+          <a-button
+            type="primary"
+            html-type="submit"
+            @click="changePassword"
+            :disabled="disabled"
+            >Поменять пароль</a-button
+          >
         </a-form-item>
       </a-form>
     </a-card>
@@ -44,105 +63,53 @@
 </template>
 
 <script>
-import { defineComponent, reactive, ref } from "vue";
-
-export default defineComponent({
-  setup() {
-    const formRef = ref();
-    const formState = reactive({
-      email: "",
-      pass: "",
-      checkPass: "",
-    });
-
-    let validatePass = async (_rule, value) => {
-      if (value === "") {
-        return Promise.reject("Please input the password");
-      } else {
-        if (formState.checkPass !== "") {
-          formRef.value.validateFields("checkPass");
-        }
-
-        return Promise.resolve();
-      }
-    };
-
-    let validatePass2 = async (_rule, value) => {
-      if (value === "") {
-        return Promise.reject("Please input the password again");
-      } else if (value !== formState.pass) {
-        return Promise.reject("Two inputs don't match!");
-      } else {
-        return Promise.resolve();
-      }
-    };
-
-    let validatePass3 = async (_rule, value) => {
-      if (value === "") {
-        return Promise.reject("Please input the email");
-      }
-      return Promise.resolve();
-    };
-
-    const rules = {
-      email: [
-        {
-          required: true,
-          validator: validatePass3,
-          trigger: "change",
-        },
-      ],
-      pass: [
-        {
-          required: true,
-          validator: validatePass,
-          trigger: "change",
-        },
-      ],
-      checkPass: [
-        {
-          validator: validatePass2,
-          trigger: "change",
-        },
-      ],
-    };
-    const layout = {
-      labelCol: {
-        span: 4,
-      },
-      wrapperCol: {
-        span: 14,
-      },
-    };
-
-    const handleFinish = (values) => {
-      console.log(values, formState);
-    };
-
-    const handleFinishFailed = (errors) => {
-      console.log(errors);
-    };
-
-    const resetForm = () => {
-      formRef.value.resetFields();
-    };
-
-    const handleValidate = (...args) => {
-      console.log(args);
-    };
-
+export default {
+  data() {
     return {
-      formState,
-      formRef,
-      rules,
-      layout,
-      handleFinishFailed,
-      handleFinish,
-      resetForm,
-      handleValidate,
+      form: {
+        email: "",
+        password: "",
+        checkPassword: "",
+      },
     };
   },
-});
+
+  methods: {
+    changePassword() {
+      if (this.form.password !== this.form.checkPassword) {
+        alert("Пароли не совпадают");
+      } else {
+        alert("Ok");
+      }
+    },
+    onFinish(values) {
+      console.log("Success:", values);
+    },
+
+    onFinishFailed(errorInfo) {
+      console.log("Failed:", errorInfo);
+    },
+  },
+
+  watch: {
+    form: {
+      handler(aaa) {
+        console.log(aaa);
+      },
+      deep: true,
+    },
+  },
+
+  computed: {
+    disabled() {
+      return !(
+        this.form.email &&
+        this.form.password &&
+        this.form.checkPassword
+      );
+    },
+  },
+};
 </script>
 
 <style>

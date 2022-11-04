@@ -40,33 +40,32 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
 import { UserOutlined, PlusOutlined } from "@ant-design/icons-vue";
 import AdModal from "@/components/Modals/AdModal.vue";
 
-export default defineComponent({
+export default {
   name: "NavBar",
   components: {
     UserOutlined,
     PlusOutlined,
     AdModal,
   },
-  setup() {
-    const isAdModalVisible = ref(false);
 
-    const showModal = () => {
-      isAdModalVisible.value = true;
-    };
-
-    const closeAdModal = () => (isAdModalVisible.value = false);
-
+  data() {
     return {
-      isAdModalVisible,
-      showModal,
-      closeAdModal,
+      isAdModalVisible: false,
     };
   },
-});
+
+  methods: {
+    showModal() {
+      this.isAdModalVisible = true;
+    },
+    closeAdModal() {
+      this.isAdModalVisible = false;
+    },
+  },
+};
 </script>
 
 <style>

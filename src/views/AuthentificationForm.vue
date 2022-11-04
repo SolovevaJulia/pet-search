@@ -4,19 +4,18 @@
       <a-form
         horizontal
         :model="form"
-        name="normal_login"
         class="login-form"
         @finish="onFinish"
         @finishFailed="onFinishFailed"
       >
         <a-form-item
-          label="Email"
+          label="E-mail"
           name="email"
           :rules="[
-            { required: true, message: 'Пожалуйста, введите ваш email!' },
+            { required: true, message: 'Пожалуйста, введите ваш e-mail!' },
           ]"
         >
-          <a-input v-model:value="email">
+          <a-input v-model:value="form.email">
             <template #prefix>
               <UserOutlined class="site-form-item-icon" />
             </template>
@@ -54,6 +53,7 @@
             type="primary"
             html-type="submit"
             class="login-form-button"
+            @click="auth"
           >
             Войти
           </a-button>
@@ -96,30 +96,12 @@ export default {
       },
       deep: true,
     },
-    // email(nnn) {
-    //   console.log(nnn);
-    // },
   },
 
   computed: {
     disabled() {
       return !(this.form.email && this.form.password);
     },
-  },
-
-  setup() {
-    // const onFinish = (values) => {
-    //   console.log("Success:", values);
-    // };
-
-    // const onFinishFailed = (errorInfo) => {
-    //   console.log("Failed:", errorInfo);
-    // };
-
-    return {
-      // onFinish,
-      // onFinishFailed,
-    };
   },
 };
 </script>
