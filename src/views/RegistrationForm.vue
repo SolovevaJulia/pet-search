@@ -70,6 +70,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -85,9 +87,25 @@ export default {
     reg() {
       if (this.form.password !== this.form.checkPassword) {
         alert("Пароли не совпадают");
-      } else {
-        alert("Ok");
       }
+      axios
+        .post("http://localhost:1337/api/auth/local/register", {
+          // TODO: Передать данные формы
+          username: this.email,
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => {
+          // TODO: Перекинуть на страницу авторизации. Показать сообщение что все ок
+          alert("Отлично!");
+          alert("User profile", response.data.user);
+          alert("User token", response.data.jwt);
+          this.$router.push({ name: "auth" });
+        })
+        .catch((error) => {
+          // Handle error.
+          console.log("An error occurred:", error.response);
+        });
     },
     onFinish(values) {
       console.log("Success:", values);
