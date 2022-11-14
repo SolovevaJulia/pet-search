@@ -5,12 +5,7 @@
       :bordered="false"
       class="registration-form"
     >
-      <a-form
-        horizontal
-        :model="form"
-        @finish="onFinish"
-        @finishFailed="onFinishFailed"
-      >
+      <a-form horizontal :model="form">
         <a-form-item
           label="E-mail"
           name="email"
@@ -71,6 +66,7 @@
 
 <script>
 import axios from "axios";
+import { message } from "ant-design-vue";
 
 export default {
   data() {
@@ -91,28 +87,19 @@ export default {
       axios
         .post("http://localhost:1337/api/auth/local/register", {
           // TODO: Передать данные формы
-          username: this.email,
-          email: this.email,
-          password: this.password,
+          username: this.form.email,
+          email: this.form.email,
+          password: this.form.password,
         })
-        .then((response) => {
+        .then(() => {
           // TODO: Перекинуть на страницу авторизации. Показать сообщение что все ок
-          alert("Отлично!");
-          alert("User profile", response.data.user);
-          alert("User token", response.data.jwt);
+          message.success("Регистрация прошла успешно!");
           this.$router.push({ name: "auth" });
         })
         .catch((error) => {
           // Handle error.
           console.log("An error occurred:", error.response);
         });
-    },
-    onFinish(values) {
-      console.log("Success:", values);
-    },
-
-    onFinishFailed(errorInfo) {
-      console.log("Failed:", errorInfo);
     },
   },
 
