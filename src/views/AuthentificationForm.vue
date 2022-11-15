@@ -1,13 +1,7 @@
 <template>
   <div class="authentification-form-wrapper">
     <a-card title="Войдите в ваш аккаунт" :bordered="false" class="auth-form">
-      <a-form
-        horizontal
-        :model="form"
-        class="login-form"
-        @finish="onFinish"
-        @finishFailed="onFinishFailed"
-      >
+      <a-form horizontal :model="form" class="login-form">
         <a-form-item
           label="E-mail"
           name="email"
@@ -66,6 +60,8 @@
 </template>
 
 <script>
+import { message } from "ant-design-vue";
+
 export default {
   data() {
     return {
@@ -79,13 +75,15 @@ export default {
 
   methods: {
     auth() {
-      alert("Ok");
-    },
-    onFinish(values) {
-      console.log("Success:", values);
-    },
-    onFinishFailed(errorInfo) {
-      console.log("Failed:", errorInfo);
+      let identifier = this.form.email;
+      let password = this.form.password;
+
+      this.$store.dispatch("login", { identifier, password }).then(() => {
+        message.success("Вы вошли в свой аккаунт!");
+        this.$router.push({ name: "home" });
+      });
+
+      this.login("login", { identifier, password });
     },
   },
 
