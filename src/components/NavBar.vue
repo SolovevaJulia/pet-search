@@ -8,10 +8,14 @@
       <p style="margin-bottom: 0">Потеряшки</p>
     </div>
     <a-space>
-      <router-link to="/auth">
+      <router-link v-if="!isAuth" to="/auth">
         <a-button>Войти</a-button>
       </router-link>
-      <a-button class="ad-button" @click="showModal" type="primary"
+      <a-button
+        v-if="hasToken"
+        class="ad-button"
+        @click="showModal"
+        type="primary"
         >Оставить объявление</a-button
       >
       <a-button class="ad-button-mobile" @click="showModal">
@@ -19,7 +23,7 @@
           <PlusOutlined />
         </template>
       </a-button>
-      <span>
+      <span v-if="isAuth">
         <a-badge dot>
           <router-link to="/dashboard">
             <a-button>
@@ -63,6 +67,14 @@ export default {
     },
     closeAdModal() {
       this.isAdModalVisible = false;
+    },
+  },
+  computed: {
+    hasToken() {
+      return this.$store.state.token;
+    },
+    isAuth() {
+      return this.$store.state.isAuth;
     },
   },
 };

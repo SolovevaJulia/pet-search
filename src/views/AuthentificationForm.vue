@@ -82,8 +82,6 @@ export default {
         message.success("Вы вошли в свой аккаунт!");
         this.$router.push({ name: "home" });
       });
-
-      this.login("login", { identifier, password });
     },
   },
 
