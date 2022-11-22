@@ -11,7 +11,7 @@
           Описание:
           <div>Пропал кот</div>
         </a-space>
-        <a-space> TO DO MAP </a-space>
+        <a-space> Где потерялся </a-space>
       </div>
       <a-row>
         <a-col :span="24">

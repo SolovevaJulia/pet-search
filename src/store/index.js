@@ -5,6 +5,7 @@ export default createStore({
   state: {
     isAuth: false,
     token: localStorage.getItem("auth-token") || "",
+    posts: [],
   },
   getters: {},
   mutations: {
@@ -13,6 +14,13 @@ export default createStore({
     },
     setToken(state, token) {
       state.token = token;
+    },
+    logout(state) {
+      state.isAuth = false;
+      state.token = null;
+    },
+    setPosts(state, posts) {
+      state.posts = posts;
     },
   },
   actions: {
@@ -30,9 +38,12 @@ export default createStore({
           localStorage.setItem("auth-token", token);
         })
         .catch((error) => {
-          // Handle error.
           console.log("An error occurred:", error.response);
         });
+    },
+    logOut(store) {
+      localStorage.removeItem("auth-token");
+      store.commit("logout");
     },
   },
   modules: {},

@@ -8,7 +8,7 @@
       <p style="margin-bottom: 0">Потеряшки</p>
     </div>
     <a-space>
-      <router-link v-if="!isAuth" to="/auth">
+      <router-link v-if="!hasToken" to="/auth">
         <a-button>Войти</a-button>
       </router-link>
       <a-button
@@ -23,17 +23,27 @@
           <PlusOutlined />
         </template>
       </a-button>
-      <span v-if="hasToken">
+
+      <a-dropdown v-if="hasToken">
+        <template #overlay>
+          <a-menu @click="handleMenuClick">
+            <a-menu-item key="1">
+              <router-link to="/dashboard">В личный кабинет</router-link>
+            </a-menu-item>
+            <a-menu-item @click="logOut" key="2">
+              <router-link to="/auth"></router-link>
+              Выйти</a-menu-item
+            >
+          </a-menu>
+        </template>
         <a-badge dot>
-          <router-link to="/dashboard">
-            <a-button>
-              <template #icon>
-                <UserOutlined />
-              </template>
-            </a-button>
-          </router-link>
+          <a-button>
+            <template #icon>
+              <UserOutlined />
+            </template>
+          </a-button>
         </a-badge>
-      </span>
+      </a-dropdown>
     </a-space>
   </a-layout-header>
 
@@ -68,13 +78,13 @@ export default {
     closeAdModal() {
       this.isAdModalVisible = false;
     },
+    logOut() {
+      this.$store.dispatch("logOut");
+    },
   },
   computed: {
     hasToken() {
       return this.$store.state.token;
-    },
-    isAuth() {
-      return this.$store.state.isAuth;
     },
   },
 };

@@ -9,15 +9,8 @@
     <a-form :model="form" horizontal>
       <a-row>
         <a-col :span="24">
-          <a-form-item label="Выберите тип объявления">
-            <a-select
-              ref="select"
-              v-model:value="value1"
-              @change="handleChange"
-            >
-              <a-select-option value="jack">Потерян</a-select-option>
-              <a-select-option value="lucy">Найден</a-select-option>
-            </a-select>
+          <a-form-item label="Заголовок">
+            <a-input type="text" />
           </a-form-item>
         </a-col>
 
@@ -35,7 +28,7 @@
         </a-col>
 
         <a-col :span="24">
-          <a-form-item label="Дата потери/когда был найден">
+          <a-form-item label="Когда потерялся">
             <a-date-picker :style="{ width: '100%' }"> </a-date-picker>
           </a-form-item>
         </a-col>
@@ -65,7 +58,15 @@
         </a-col>
 
         <a-col :span="24">
-          <a-form-item> TO DO MAP </a-form-item>
+          <a-form-item label="Где потерялся">
+            <a-input type="text" />
+          </a-form-item>
+        </a-col>
+
+        <a-col :span="24">
+          <a-form-item label="Описание">
+            <a-textarea type="tel" />
+          </a-form-item>
         </a-col>
 
         <a-col :span="24">
@@ -94,7 +95,7 @@ export default {
   data() {
     return {
       form: {
-        name: "",
+        title: "",
         delivery: false,
         type: [],
         resource: "",
