@@ -4,7 +4,7 @@ import axios from "axios";
 export default createStore({
   state: {
     isAuth: false,
-    token: "",
+    token: localStorage.getItem("auth-token") || "",
   },
   getters: {},
   mutations: {
@@ -27,7 +27,7 @@ export default createStore({
           store.commit("setToken", token);
           store.commit("login");
 
-          // localStorage.setItem("auth-token", token);
+          localStorage.setItem("auth-token", token);
         })
         .catch((error) => {
           // Handle error.

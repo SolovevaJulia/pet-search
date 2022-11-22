@@ -23,7 +23,7 @@
           <PlusOutlined />
         </template>
       </a-button>
-      <span v-if="isAuth">
+      <span v-if="hasToken">
         <a-badge dot>
           <router-link to="/dashboard">
             <a-button>
