@@ -9,13 +9,13 @@
     <a-form :model="form" horizontal>
       <a-row>
         <a-col :span="24">
-          <a-form-item label="Заголовок">
+          <a-form-item label="Заголовок" name="title">
             <a-input type="text" />
           </a-form-item>
         </a-col>
 
         <a-col :span="24">
-          <a-form-item label="Выберите теги">
+          <a-form-item label="Выберите теги" name="tags">
             <a-select
               :options="tags"
               mode="multiple"
@@ -28,13 +28,13 @@
         </a-col>
 
         <a-col :span="24">
-          <a-form-item label="Когда потерялся">
+          <a-form-item label="Когда потерялся" name="date">
             <a-date-picker :style="{ width: '100%' }"> </a-date-picker>
           </a-form-item>
         </a-col>
 
         <a-col :span="24">
-          <a-form-item>
+          <a-form-item name="img">
             <a-upload-dragger
               v-model:fileList="fileList"
               name="file"
@@ -58,19 +58,19 @@
         </a-col>
 
         <a-col :span="24">
-          <a-form-item label="Где потерялся">
+          <a-form-item label="Где потерялся" name="place">
             <a-input type="text" />
           </a-form-item>
         </a-col>
 
         <a-col :span="24">
-          <a-form-item label="Описание">
-            <a-textarea type="tel" />
+          <a-form-item label="Описание" name="description">
+            <a-textarea type="text" />
           </a-form-item>
         </a-col>
 
         <a-col :span="24">
-          <a-form-item label="Номер телефона">
+          <a-form-item label="Номер телефона" name="telephone">
             <a-input type="tel" />
           </a-form-item>
         </a-col>
@@ -96,10 +96,12 @@ export default {
     return {
       form: {
         title: "",
-        delivery: false,
-        type: [],
-        resource: "",
-        desc: "",
+        tags: "",
+        date: "",
+        img: {},
+        place: "",
+        description: "",
+        telephone: "",
       },
       tags: [
         {
