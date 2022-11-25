@@ -1,41 +1,24 @@
 <template>
-  <a-modal
-    :destroy-on-close="true"
-    class="ad-modal"
-    title="Объявление"
-    @ok="handleOk"
-    @cancel="$emit('closeAdModal')"
-  >
+  <a-modal :destroy-on-close="true" class="ad-modal" title="Объявление">
     <a-form :model="form" horizontal>
       <a-row>
         <a-col :span="24">
           <a-form-item label="Заголовок" name="title">
-            <a-input type="text" />
-          </a-form-item>
-        </a-col>
-
-        <a-col :span="24">
-          <a-form-item label="Выберите теги" name="tags">
-            <a-select
-              :options="tags"
-              mode="multiple"
-              :style="{ width: '100%' }"
-              v-model:value="value"
-              @change="handleChange"
-            >
-            </a-select>
+            <a-input v-model:value="form.title" type="text" />
           </a-form-item>
         </a-col>
 
         <a-col :span="24">
           <a-form-item label="Когда потерялся" name="date">
-            <a-date-picker :style="{ width: '100%' }"> </a-date-picker>
+            <a-date-picker v-model:value="form.date" :style="{ width: '100%' }">
+            </a-date-picker>
           </a-form-item>
         </a-col>
 
         <a-col :span="24">
           <a-form-item name="img">
             <a-upload-dragger
+              v-model:value="form.img"
               v-model:fileList="fileList"
               name="file"
               :multiple="true"
@@ -49,56 +32,58 @@
               <p class="ant-upload-text">
                 Щелкните или перетащите сюда изображение
               </p>
-              <!-- <p class="ant-upload-hint">
-                   Support for a single or bulk upload. Strictly prohibit from
-                   uploading company data or other band files
-                 </p> -->
             </a-upload-dragger>
           </a-form-item>
         </a-col>
 
         <a-col :span="24">
           <a-form-item label="Где потерялся" name="place">
-            <a-input type="text" />
+            <a-input v-model:value="form.place" type="text" />
           </a-form-item>
         </a-col>
 
         <a-col :span="24">
           <a-form-item label="Описание" name="description">
-            <a-textarea type="text" />
+            <a-textarea v-model:value="form.description" type="text" />
           </a-form-item>
         </a-col>
 
         <a-col :span="24">
           <a-form-item label="Номер телефона" name="telephone">
-            <a-input type="tel" />
+            <a-input v-model:value="form.telephone" type="tel" />
           </a-form-item>
         </a-col>
       </a-row>
     </a-form>
+    <template #footer>
+      <a-button key="back" @click="$emit('closeAdModal')">Закрыть</a-button>
+      <a-button key="submit" type="primary" :loading="loading" @click="setPost"
+        >Отправить</a-button
+      >
+    </template>
   </a-modal>
 </template>
 
 <script>
-import { InboxOutlined } from "@ant-design/icons-vue";
+// import { InboxOutlined } from "@ant-design/icons-vue";
 // import { message } from "ant-design-vue";
 import dayjs from "dayjs";
 import "dayjs/locale/ru";
 import locale from "ant-design-vue/es/date-picker/locale/zh_CN";
+import axios from "axios";
 
 export default {
   name: "AdModal",
   components: {
-    InboxOutlined,
+    // InboxOutlined,
   },
   emits: ["closeAdModal"],
   data() {
     return {
       form: {
         title: "",
-        tags: "",
         date: "",
-        img: {},
+        // img: {},
         place: "",
         description: "",
         telephone: "",
@@ -116,6 +101,7 @@ export default {
       fileList: [],
       dayjs,
       locale,
+      loading: false,
     };
   },
 
@@ -129,6 +115,26 @@ export default {
     },
     downloadFile(e) {
       console.log(e);
+    },
+    setPost() {
+      axios.post(
+        "http://localhost:1337/api/posts",
+        {
+          data: {
+            title: this.form.title,
+            date: this.form.date,
+            // img: this.form.img,
+            place: this.form.place,
+            description: this.form.description,
+            telephone: this.form.telephone,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.$store.state.token}`,
+          },
+        }
+      );
     },
   },
 
