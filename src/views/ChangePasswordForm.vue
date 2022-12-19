@@ -91,15 +91,6 @@ export default {
     },
   },
 
-  watch: {
-    form: {
-      handler(aaa) {
-        console.log(aaa);
-      },
-      deep: true,
-    },
-  },
-
   computed: {
     disabled() {
       return !(

@@ -9,48 +9,37 @@
         @search="onSearch"
       />
     </div>
-    <a-row :gutter="[32, 16]">
-      <a-col :span="24" :md="12">
-        <a-card hoverable style="width: 100%">
-          <template #cover>
+    <a-list
+      item-layout="vertical"
+      size="large"
+      :pagination="pagination"
+      :data-source="listData"
+    >
+      <template #renderItem="{ item }">
+        <a-list-item key="item.title">
+          <template #actions>
+            <span v-for="{ type, text } in actions" :key="type">
+              <component :is="type" style="margin-right: 8px" />
+              {{ text }}
+            </span>
+          </template>
+          <template #extra>
             <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+              width="272"
+              alt="logo"
+              src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
             />
           </template>
-          <template #actions>
-            <setting-outlined key="setting" />
-            <edit-outlined key="edit" />
-            <ellipsis-outlined key="ellipsis" />
-          </template>
-          <a-card-meta title="Card title" description="This is the description">
-            <template #avatar>
-              <a-avatar src="https://joeschmoe.io/api/v1/random" />
+          <a-list-item-meta :description="item.description">
+            <template #title>
+              <a :href="item.href">{{ item.title }}</a>
             </template>
-          </a-card-meta>
-        </a-card>
-      </a-col>
-      <a-col :span="24" :md="12">
-        <a-card hoverable style="width: 100%">
-          <template #cover>
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          </template>
-          <template #actions>
-            <setting-outlined key="setting" />
-            <edit-outlined key="edit" />
-            <ellipsis-outlined key="ellipsis" />
-          </template>
-          <a-card-meta title="Card title" description="This is the description">
-            <template #avatar>
-              <a-avatar src="https://joeschmoe.io/api/v1/random" />
-            </template>
-          </a-card-meta>
-        </a-card>
-      </a-col>
-    </a-row>
+            <template #avatar><a-avatar :src="item.avatar" /></template>
+          </a-list-item-meta>
+          {{ item.content }}
+        </a-list-item>
+      </template>
+    </a-list>
   </container-wrapper>
 </template>
 
@@ -63,6 +52,8 @@ import {
   EllipsisOutlined,
 } from "@ant-design/icons-vue";
 
+const listData = [];
+
 export default defineComponent({
   components: {
     ContainerWrapper,
@@ -74,6 +65,18 @@ export default defineComponent({
   data() {
     return {
       value: "",
+      listData,
+      pagination: {
+        onChange: (page) => {
+          console.log(page);
+        },
+        pageSize: 3,
+      },
+      actions: [
+        { type: "star-o", text: "156" },
+        { type: "like-o", text: "156" },
+        { type: "message", text: "2" },
+      ],
     };
   },
 
