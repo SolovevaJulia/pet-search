@@ -15,7 +15,7 @@
           </a-form-item>
         </a-col>
 
-        <a-col :span="24">
+        <!-- <a-col :span="24">
           <a-form-item name="img">
             <a-upload-dragger
               v-model:value="form.img"
@@ -34,7 +34,7 @@
               </p>
             </a-upload-dragger>
           </a-form-item>
-        </a-col>
+        </a-col> -->
 
         <a-col :span="24">
           <a-form-item label="Где потерялся" name="place">
@@ -88,16 +88,6 @@ export default {
         description: "",
         telephone: "",
       },
-      tags: [
-        {
-          value: "кот",
-          label: "кот",
-        },
-        {
-          value: "собака",
-          label: "собака",
-        },
-      ],
       fileList: [],
       dayjs,
       locale,

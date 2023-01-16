@@ -86,18 +86,15 @@ export default {
       }
       axios
         .post("http://localhost:1337/api/auth/local/register", {
-          // TODO: Передать данные формы
           username: this.form.email,
           email: this.form.email,
           password: this.form.password,
         })
         .then(() => {
-          // TODO: Перекинуть на страницу авторизации. Показать сообщение что все ок
           message.success("Регистрация прошла успешно!");
           this.$router.push({ name: "auth" });
         })
         .catch((error) => {
-          // Handle error.
           console.log("An error occurred:", error.response);
         });
     },
