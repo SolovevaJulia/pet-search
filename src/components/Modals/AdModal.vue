@@ -107,14 +107,11 @@ export default {
       console.log(e);
     },
     setPost() {
-      axios.post(
-        "http://localhost:1337/api/posts",
-        {
+      axios
+        .post("http://localhost:1337/api/posts", {
           headers: {
             Authorization: `Bearer ${this.$store.state.token}`,
           },
-        },
-        {
           data: {
             title: this.form.title,
             date: this.form.date,
@@ -123,8 +120,10 @@ export default {
             description: this.form.description,
             telephone: this.form.telephone,
           },
-        }
-      );
+        })
+        .then((response) => {
+          console.log(response);
+        });
     },
   },
 
