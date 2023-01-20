@@ -107,23 +107,22 @@ export default {
       console.log(e);
     },
     setPost() {
-      axios
-        .post("http://localhost:1337/api/posts", {
-          headers: {
-            Authorization: `Bearer ${this.$store.state.token}`,
-          },
-          data: {
-            title: this.form.title,
-            date: this.form.date,
-            // img: this.form.img,
-            place: this.form.place,
-            description: this.form.description,
-            telephone: this.form.telephone,
-          },
-        })
-        .then((response) => {
-          console.log(response);
-        });
+      axios.post("http://localhost:1337/api/posts", {
+        headers: {
+          Authorization: `Bearer ${this.$store.state.token}`,
+        },
+        data: {
+          title: this.form.title,
+          date: this.form.date,
+          // img: this.form.img,
+          place: this.form.place,
+          description: this.form.description,
+          telephone: this.form.telephone,
+        },
+      });
+      // .then((response) => {
+      //   console.log(response);
+      // });
     },
   },
 
