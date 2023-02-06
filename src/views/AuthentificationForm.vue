@@ -43,7 +43,7 @@
 
         <a-form-item>
           <a-button
-            :disabled="disabled"
+            :disabled="formVerification"
             type="primary"
             html-type="submit"
             class="login-form-button"
@@ -86,7 +86,7 @@ export default {
   },
 
   computed: {
-    disabled() {
+    formVerification() {
       return !(this.form.email && this.form.password);
     },
   },

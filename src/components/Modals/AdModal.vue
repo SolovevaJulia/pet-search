@@ -15,7 +15,7 @@
           </a-form-item>
         </a-col>
 
-        <!-- <a-col :span="24">
+        <a-col :span="24">
           <a-form-item name="img">
             <a-upload-dragger
               v-model:value="form.img"
@@ -34,7 +34,7 @@
               </p>
             </a-upload-dragger>
           </a-form-item>
-        </a-col> -->
+        </a-col>
 
         <a-col :span="24">
           <a-form-item label="Где потерялся" name="place">
@@ -57,7 +57,12 @@
     </a-form>
     <template #footer>
       <a-button key="back" @click="$emit('closeAdModal')">Закрыть</a-button>
-      <a-button key="submit" type="primary" :loading="loading" @click="setPost"
+      <a-button
+        prevent.Defaul
+        key="submit"
+        type="primary"
+        :loading="loading"
+        @click="setPost"
         >Отправить</a-button
       >
     </template>
@@ -65,8 +70,7 @@
 </template>
 
 <script>
-// import { InboxOutlined } from "@ant-design/icons-vue";
-// import { message } from "ant-design-vue";
+import { InboxOutlined } from "@ant-design/icons-vue";
 import dayjs from "dayjs";
 import "dayjs/locale/ru";
 import locale from "ant-design-vue/es/date-picker/locale/zh_CN";
@@ -75,7 +79,7 @@ import axios from "axios";
 export default {
   name: "AdModal",
   components: {
-    // InboxOutlined,
+    InboxOutlined,
   },
   emits: ["closeAdModal"],
   data() {
@@ -83,7 +87,7 @@ export default {
       form: {
         title: "",
         date: "",
-        // img: {},
+        img: {},
         place: "",
         description: "",
         telephone: "",
@@ -114,15 +118,13 @@ export default {
         data: {
           title: this.form.title,
           date: this.form.date,
-          // img: this.form.img,
+          img: this.form.img,
           place: this.form.place,
           description: this.form.description,
           telephone: this.form.telephone,
         },
       });
-      // .then((response) => {
-      //   console.log(response);
-      // });
+      this.$emit("closeAdModal");
     },
   },
 

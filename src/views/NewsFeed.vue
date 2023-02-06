@@ -9,44 +9,53 @@
         @search="onSearch"
       />
     </div>
+    {{ posts.data }}
     <a-list
-      item-layout="vertical"
-      size="large"
-      :pagination="pagination"
+      :grid="{ gutter: 16, column: 2 }"
+      item-layout="horizontal"
       :data-source="posts.data"
     >
       <template #renderItem="{ item }">
-        {{ item.attributes }}
-        <!-- {{ item.attributes.title }}
-        {{ item.attributes.date }}
-        {{ item.attributes.place }}
-        {{ item.attributes.description }}
-        {{ item.attributes.telephone }} -->
+        <a-list-item>
+          <a-space direction="vertical" :style="{ margin: '.25rem 0' }">
+            <a-card style="width: 400px; text-align: left">
+              <a-typography-title :level="4">{{
+                item.attributes.title
+              }}</a-typography-title>
+              {{ item.attributes.photo }}
+              <template #cover>
+                <img
+                  alt="example"
+                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                />
+              </template>
 
-        <a-list-item key="item.id">
-          <template #actions>
-            <span v-for="{ type, text } in actions" :key="type">
-              <component :is="type" style="margin-right: 8px" />
-              {{ text }}
-            </span>
-          </template>
+              <a-space direction="vertical">
+                <a-space align="baseline">
+                  Дата пропажи:
+                  <p>{{ item.attributes.date }}</p>
+                </a-space>
+                <a-space align="baseline">
+                  Место пропажи:
+                  <p>{{ item.attributes.place }}</p>
+                </a-space>
+                <a-space align="baseline">
+                  Описание:
+                  <p>{{ item.attributes.description }}</p>
+                </a-space>
+                <a-space align="baseline">
+                  Номер телефона:
+                  <p>{{ item.attributes.telephone }}</p>
+                </a-space>
+              </a-space>
 
-          <template #extra>
-            <img
-              width="272"
-              alt="logo"
-              src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-            />
-          </template>
-
-          <a-list-item-meta :description="item.description">
-            <template #title>
-              <a :href="item.href">{{ item.title }}</a>
-            </template>
-
-            <template #avatar><a-avatar :src="item.avatar" /></template>
-          </a-list-item-meta>
-          {{ item.content }}
+              <template #actions>
+                <setting-outlined key="setting" />
+                <edit-outlined key="edit" />
+                <ellipsis-outlined key="ellipsis" />
+              </template>
+            </a-card>
+          </a-space>
         </a-list-item>
       </template>
     </a-list>
@@ -95,14 +104,6 @@ export default defineComponent({
       console.log("use value", searchValue);
       console.log("or use this.value", this.value);
     },
-    // getPosts() {
-    //   for (let i = 0; i < this.posts.length; i++) {
-    //     this.posts.push({
-    //       title: this.posts.data.attributes.title,
-    //     });
-    //   }
-    //   console.log(this.posts);
-    // },
   },
   mounted() {
     axios

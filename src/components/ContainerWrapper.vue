@@ -4,7 +4,6 @@
       :style="{
         background: '#fff',
         padding: '24px',
-        height: '100vh',
       }"
     >
       <slot></slot>
