@@ -3,17 +3,17 @@
     <div :style="{ width: '100%', margin: '0 0 2rem 0' }">
       <a-input-search
         :style="{ width: '100%' }"
-        v-model:value="value"
+        v-model:value="searchName"
         placeholder="Найти объявление"
         enter-button
         @search="onSearch"
       />
     </div>
-    {{ posts.data }}
+    {{ filteredPosts }}
     <a-list
       :grid="{ gutter: 16, column: 2 }"
       item-layout="horizontal"
-      :data-source="posts.data"
+      :data-source="filteredPosts.data"
     >
       <template #renderItem="{ item }">
         <a-list-item>
@@ -24,10 +24,7 @@
               }}</a-typography-title>
               {{ item.attributes.photo }}
               <template #cover>
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
+                <img alt="example" src="http://localhost:1337/api/posts" />
               </template>
 
               <a-space direction="vertical">
@@ -96,6 +93,7 @@ export default defineComponent({
         { type: "like-o", text: "156" },
         { type: "message", text: "2" },
       ],
+      searchName: "",
     };
   },
 
@@ -115,6 +113,17 @@ export default defineComponent({
       .then((response) => {
         this.posts = response.data;
       });
+  },
+  computed: {
+    filteredPosts() {
+      if (this.searchName) {
+        return this.posts.filter((item) => {
+          return item.title.startsWith(this.searchName);
+        });
+      } else {
+        return this.posts;
+      }
+    },
   },
 });
 </script>

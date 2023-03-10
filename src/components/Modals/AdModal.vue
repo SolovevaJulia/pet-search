@@ -21,9 +21,8 @@
               v-model:value="form.img"
               v-model:fileList="fileList"
               name="file"
-              :multiple="true"
               action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-              @change="handleChange"
+              @change="downloadPhoto"
               @drop="downloadFile"
             >
               <p class="ant-upload-drag-icon">
@@ -126,6 +125,7 @@ export default {
       });
       this.$emit("closeAdModal");
     },
+    downloadPhoto() {},
   },
 
   watch: {},
